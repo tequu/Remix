@@ -1,0 +1,21 @@
+#yhteystiedot{
+    margin-top: 43px;
+    margin-bottom:20px;
+    padding:30px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#valmentajat #otsikko, #yhteyshenkilot #otsikko{
+    font-size: 18px;
+    font-weight: bold;
+}
+#yhteystiedot #henkilo{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+#yhteystiedot #nimi{
+    font-size: 17px;
+}
+#yhteystiedot #tiedot{
+    font-size: 14px;
+}

@@ -1,0 +1,61 @@
+#sarjataulukko_pohja{
+    margin-top: 43px;
+    margin-bottom:20px;
+    padding:30px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#sarjataulukko{
+    background-image: URL("/Remix/kuvat/sarjataulukko-tausta.png");
+    width: 575px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+#sarjataulukko #ryhma{
+    width: 465px;
+    height: 29px;
+    padding-top: 7px;
+    padding-left: 10px;
+    float: left;
+}
+#sarjataulukko #kausi{
+    height: 29px;
+    padding-top: 7px;
+    width: 100px;
+    float: left;
+}
+#sarjataulukko #tiedot, #sarjataulukko #joukkue{
+    width: 575px;
+    height: 33px;
+    padding-top: 3px;
+}
+#sarjataulukko #tiedot{
+    background-image: URL("/Remix/kuvat/sarjataulukko-musta.png");
+    color: #ff8331;
+}
+#sarjataulukko #nimi, #sarjataulukko #o, #sarjataulukko #v, #sarjataulukko #h, #sarjataulukko #t, #sarjataulukko #me, #sarjataulukko #p{
+    float: left;
+    width: 40px;
+    height: 29px;
+    font-size: 14px;
+    margin-top: 4px;
+}
+#sarjataulukko #nimi{
+    width: 305px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+#sarjataulukko #me{
+    width: 60px;
+}
+#sarjataulukko #fbcremix{
+    background-image: URL("/Remix/kuvat/sarjataulukko-harmaa.png");
+    width: 575px;
+    height: 29px;
+}
+#sarjataulukko .tumma{
+    background-image: URL('/Remix/kuvat/sarjataulukko-oranssi.png'); 
+}
+#sarjataulukko_pohja #sarjataulukkoryhma{
+    margin-top: 20px;
+}

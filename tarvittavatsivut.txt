@@ -1,0 +1,22 @@
+-seura
+    joukkueet
+    pelaajat
+    yhteystiedot
+    sarjataulukko
+    pelit
+    tilastot
+    kuvat
+    vieraskirja
+    historia 
+    hallitus
+    latauspankki
+    toimintalinja
+
+-foorumit
+    keskustelualueryhmät(etusivu)
+    keskustelualue
+    keskustelu
+    tapahtuma
+
+-muita
+    kalenteri

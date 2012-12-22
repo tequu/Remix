@@ -1,0 +1,191 @@
+-Sivusto
+	-Navigointi
+		-Etusivu
+		-Joukkueet
+		-Uutiset
+		-Info
+			-Kuvat
+			-Johtokunta
+			-Latauspankki
+			-Seuranhistoria
+			-?
+		-Vieraskirja
+	-Tunnus navigointi
+		-Kirjaudu
+		-Rekisteröidy
+		-Ohjauspaneeli
+		-Kirjaudu ulos
+	-Etusivu
+		-Kalenteri
+		-Seuran tiedotukset
+			-Hiljattain lisätyt erivärillä
+		-Joukkueiden tiedotukset
+			-Hiljattain lisätyt erivärillä
+		-Sponsorit
+		-Uusimmat uutiset
+		-Seuran uusimmat kuvat
+		-Joukkueiden uusimmat kuvat
+	-Joukkueiden sivut
+		-Navigointi
+			-Etusivu
+			-Pelaajat
+			-Yhteystiedot
+			-Sarjataulukko
+			-Pelit
+			-Tilastot
+			-Kuvat
+		-Etusivu
+			-Joukkueet tiedotukset
+			-Sponsorit
+			-Kalenteri
+		-Pelaajatkortit
+			-Nimi vain näkyvissä aluksi, aukeaa klikkaamalla
+			-Nimi, syntymävuosi, pelinumero, vapaa valinnaisia tietoja
+		-Yhteystiedot
+			-Valmentajat ja yhteyshenkilöt
+			-Nimi, sähköposti ja puhelin numero
+		-Sarjataulukko
+			-FBC Remix korostettu, täytyy olla nimetty FBC Remix. Remix ei kelpaa.
+		-Pelit
+			-Kotiturnaukset korostettu punaisella
+			-Kalenterista tullessa valitun päivän pelit korostettu vaalean sinisellä
+			-Selityksen väreille
+		-Tilastot
+			-O, RL, RM, P, +-
+	-Uutiset
+		-Vasemmalla kaikki uutiset
+			-10 uutista yhdellä sivulla
+		-Uutisen otsikkoa klikatessa uutinen aukeaa oikella, ilman sivun uudelleen latausta
+	-Info
+		-Kotihalli
+		-Kotisivujen ylläpito
+		-Linkkit
+			-Kuvat
+			-Johtokunta
+			-Latauspankki
+			-Seuranhistoria
+	-Kuvat
+		-Seuran kuvat
+			-Jako kategorioihin
+			-Kuva
+				-Kuva
+				-Kuvateksti
+	-Vieraskirja
+		-10 viestiä ydellä sivulla
+		-Linkki sääntöihin
+		-Linkki kirjoitus lomakkeeseen
+		-Viesti
+			-Nimimerkki, Seura, joukkue, aika ja viesti
+	-Kävijälaskuri
+	-Widgets
+-Foorumit
+	-Yksityis viestit
+	-Keskustelualue kategoriat
+		-Keskustelualueet
+			-Keskustelualueen kuvaus
+			-20 keskustelua yhdellä sivulla
+			-Keskustelut
+				-10 viestiä per sivu
+				-Mukana mahdollisesti tapahtuma
+				-Viestit
+					-Otsikko, kirjoittaja, aika, muokkaus nappi, lainaus nappi, viesti, report nappi
+					-Muokkaus aika jos muokattu
+				-Viestin kirjoitus lomake
+					-Otsikko
+					-Viesti
+	-Tapahtuma
+		-Ilmoittautuminen in tai out
+		-Harkat/Peli/muu, eri väri kaikilla
+		-Alkamisaika
+		-Loppumisaika(ei pakollinen)
+		-Ilmoittautumisen takaraja(ei pakollinen)
+		-Lisätieto(ei pakollinen)
+		-Sähköpostiin ilmoitus uudesta tapahtumasta jos halutaan
+		-Tapahtuma voidaan liittää useamman joukkueen keskustelualueelle
+-Ohjauspaneeli
+	-Omat tiedot
+		-Liittyminen joukkueeseen salasanalla
+		-Nimen, syntymävuoden ja salasanan muokkaus
+	-Keskustelualueiden ryhmien hallinta
+		-Uuden ryhmän luonti, poisto ja nimen muokkaus
+	-Keskustelualueiden hallinta
+		-Uuden keskustelualueen luonti valittuun ryhmään
+		-Keskustelualueen tietojen muokkaus, poisto ja siirtäminen toiseen ryhmään
+	-Käyttäjien hallinta
+		-Hakeminen käyttäjän nimellä, syntymävuodella tai sähöpostiosoitteella
+		-Käyttäjen estäminen ja poistaminen
+		-Oikeuksien antaminen
+	-Joukkueiden hallinta
+		-Uuden joukkueen luonti
+		-Joukkueen nimen muokkaus
+		-Joukkueen keskustelualueen kuvauksen muokkaus
+		-Joukkueen salasanan muokkkaus
+		-Pelaajien lisääminen, muokkaus ja poisto
+			-Roolin lisäys
+			-Tilastojen muokkaus
+		-Näkyvien tietojen hallinta
+	-Tiedotusten hallinta
+		-Tiedotusten kirjoistus, muokkaus, poisto
+			-Tärkeys järjestyksen valinta
+	-Pelien hallinta
+		-Pelien lisäys, muokkaus, poisto
+	-Sarjataulukkojen hallinta
+		-Lisäys, muokkaus ja poisto
+	-Yhteystietojen hallinta
+		-Lisäys, muokkaus ja poisto
+	-Kuvien hallinta
+		-Kategorioiden lisäys
+		-Kuvien lisäys kategorioihin
+		-Kuvien poisto
+		-Kategoiden nimen muokkaus ja poisto
+-Profiili
+	-Liittymispäivä
+	-Tilastot sisäänkirjautuneille
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/** Ehdotuksia **/
+
+-Hallilista
+	-Lista halleista joissa harkat
+		-Vuorot eroteltu
+		-Mahdollisuus perua oma vuoro täysin tai antaa mahdollisuus toisen joukkueen varata vuoro
+-Kysymys
+	-Kysymys laitetaan foorumeilla keskustelun yhteyteen samalla lailla kuin tapahtumakin
+	-Joukkueen/seuran ylläpitäjä voi laittaa kysymyksen myös joukkueen/seuran etusivulle näkyviin
+	-Vastausvaihtoentoja voi olla useita
+	-Yhdessä sessionissa voi vastata kerran
+-Viikottainen maili joukkueen tapahtumista
+	-Joukueen ylläpitäjä voi valita viikonpäivän jona lähetetään maili kaikille joukkueen jäsenille
+	-Mailissa on ainakin uusimmat tapahtumat, muuta?
+-BBCode foorumeille
+	-Viestin tekstiä voi muokata
+		-Linkit voit tehdä klikattaviksi
+		-Teksti fontin koko, väriä, tyyliä voi muokata
+		-Bold, italic, underline
+		-Hymiöitä
+		-Tekstin sijoitus
+		-Luettelomerkit
+		-Ylä- ja alaindeksit
+-Mahdollisuus "tilata" keskustelualueet
+	-Käyttäjän sähköpostiin lähetetään ilmoitus, kun keskusteluun kirjoitetaan uusi viesti
+-Kiireelliset viestit joukkueiden keskustelualueella
+	-Joukkueen jäsenille viesti sähköpostiin uudesta viestistä/keskustelusta
+-Statistiikkaa
+	-Tietoa viestien kirjoitteluista
+	-Tietoa käyttäjän kirjoittamistä määristä
+	-Myös muuta...
+-Pelaaja listan tulostus
+	-Voi tulostaa kaikki joukkueen pelaajat listana missä on nimi, numero, kapteeni ja Y
+	-Järjestys numerolla

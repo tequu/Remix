@@ -1,0 +1,91 @@
+#seuravalikko{
+    height: 33px;
+    width: 970px;
+    margin: 0 auto;
+    position:relative;
+    color:#ffffff;
+    z-index: 10;
+}
+#seuravalikko ul{
+    padding:0;
+    margin:0;
+    margin-left:20px;
+    list-style: none;
+}
+#seuravalikko ul li, #tunnus div{
+    width:118px;
+    height:31px;
+    float:left;
+    margin-right:10px;
+    position:relative;
+}
+#seuravalikko ul li #nappi{
+    width: 118px;
+    height: 31px;
+    display: block;
+}
+#seuravalikko ul li #alavalikko{
+    display: none;
+    position: absolute;
+    width: 108px;
+    top: 28px;
+    left: 5px;
+}
+#seuravalikko ul li #yla{
+    background-image: URL("/Remix/kuvat/valikko/liukuvalikko-yla.png");
+    width: 108px;
+    height: 5px;
+}
+#seuravalikko ul li #alavalikko #valikko{
+    background-image: URL("/Remix/kuvat/valikko/liukuvalikko.png");
+}
+#seuravalikko ul li #alavalikko #osa {
+    background-image: URL("/Remix/kuvat/valikko/liukuvalikko-pohja.png");
+    width: 88px;
+    margin: 0 auto;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+#seuravalikko ul li #alavalikko #osa:last-child{
+    margin-bottom: 0px;
+}
+#seuravalikko ul li #alavalikko #osa:hover{
+    background-image: none;
+    background-color: #d3d3d3;
+}
+#seuravalikko ul li #alavalikko #kerhot {
+    width: 88px;
+    color: #000000;
+    padding: 2px 0px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#seuravalikko ul li #alavalikko div a{
+    padding: 2px 0px;
+    width: 88px;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+#seuravalikko ul li #ala{
+    background-image: URL("/Remix/kuvat/valikko/liukuvalikko-ala.png");
+    width: 108px;
+    height: 10px;
+}
+#tunnus {
+    float: right;
+    margin-right:27px;
+    height:31px;
+    width:246px;
+    text-align: center;
+}
+#tunnus div{
+    cursor: pointer;
+}
+#tunnus div:last-child{
+    margin: 0;
+}

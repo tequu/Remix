@@ -1,0 +1,57 @@
+#tilastot_pohja{
+    margin-top: 43px;
+    margin-bottom:20px;
+    padding:30px 30px 20px 20px;
+    width: 575px;
+    background-color:#d3d3d3;
+}
+#tilastot{
+    background-image: URL("/Remix/kuvat/sarjataulukko-tausta.png");
+    width: 575px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+#tilastot #ryhma{
+    width: 465px;
+    height: 29px;
+    padding-top: 7px;
+    padding-left: 10px;
+    float: left;
+}
+#tilastot #kausi{
+    height: 29px;
+    width: 100px;
+    padding-top: 7px;
+    float: left;
+}
+#tilastot #tiedot, #tilastot #pelaaja{
+    width: 575px;
+    height: 36px;
+}
+#tilastot #tiedot{
+    background-image: URL("/Remix/kuvat/sarjataulukko-musta.png");
+    color: #ff8331;
+}
+#tilastot #sijoitus, #tilastot #nimi, #tilastot #o, #tilastot #rl, #tilastot #rm, #tilastot #p, #tilastot #plusmiinus{
+    float: left;
+    width: 60px;
+    height: 29px;
+    font-size: 14px;
+    margin-top: 7px;
+}
+#tilastot #sijoitus{
+    padding-left: 10px;
+    width: 30px;
+}
+#tilastot #nimi{
+    width: 214px;
+}
+#tilastot #p{
+    width: 81px;
+}
+#tilastot .tumma{
+    background-image: URL('/Remix/kuvat/sarjataulukko-oranssi.png');
+}
+#tilastot_pohja #tilastoryhma{
+    margin-top: 20px;
+}

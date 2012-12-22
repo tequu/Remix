@@ -1,0 +1,97 @@
+#kalenteri{
+    width:246px;
+    height: 225px;
+    background-image: URL("/Remix/kuvat/kalenteri/taustapohja.png");
+}
+#kalenteri .valikko{
+    width:246px;
+    height:30px;
+    color:#FFFFFF;
+}
+#kalenteri .valikko .edellinen, #kalenteri .valikko .seuraava{
+    width:10px;
+    margin:5px 5px 0px 7px;
+    cursor:pointer;
+    float:left;
+    background-repeat: no-repeat;
+}
+#kalenteri .valikko .seuraava{
+    margin:5px 0px 0px 0px;
+}
+#kalenteri .valikko .kuukausi_vuosi{
+    width: 199px;
+    margin: 5px 5px 0px 0px;
+    text-align: center;
+    font-size: 15px;
+    float: left;
+}
+#kalenteri .kalenteri_content{
+    width: 230px;
+    height: 180px;
+    margin-left: 7px;
+    background-image: URL("/Remix/kuvat/kalenteri/harmaapohja.png");
+}
+#kalenteri .viikonpaivat{
+    width: 230px;
+    height: 25px;
+    background-image: URL("/Remix/kuvat/kalenteri/oranssipalkki.png");
+}
+#kalenteri .viikonpaivat div, #kalenteri .viikko div{
+    margin-left: 10px;
+    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+}
+#kalenteri .viikko div{
+    font-size: 13px;
+}
+#kalenteri .viikko{
+    height: 25px;
+    width: 230px;
+}
+#kalenteri .viikko div{
+    height: 22px;
+}
+#kalenteri .paiva:first-child{
+    margin-left:3px;
+}
+#kalenteri .viikko #harmaa{
+    color: #808080;
+}
+#kalenteri .viikko #tamapaiva, #kalenteri .viikko #pelitanaan{
+    margin-top: 0px;
+    background-color: #e86d1c;
+    margin-left: 8px;
+    width: 22px;
+    height: 22px;
+    padding: 2px 2px 0px 2px;
+}
+#kalenteri .viikko #kotiturnaus, #kalenteri .viikko #kotiturnaustanaan{
+    margin-top: 0px;
+    margin-left: 8px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 2px;
+    width: 16px;
+    height: 18px;
+    color: #e86d1c;
+    padding: 0px 2px 2px 2px;
+    text-align: center;
+    cursor: pointer;
+}
+#kalenteri .viikko #peli{
+    color: #e86d1c;
+    cursor: pointer;
+}
+#kalenteri .viikko #kotiturnaustanaan{
+    color: #000000;
+    background-color: #e86d1c;
+}
+#kalenteri .viikko #pelitanaan{
+    font-weight: bold;
+    cursor: pointer;
+}

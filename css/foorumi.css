@@ -1,0 +1,54 @@
+/*keskustelualue sivu */
+#keskustelualuevalikko #vasen, #keskusteluvalikko #vasen{
+    float:left;
+}
+#keskustelualuevalikko #oikea{
+    text-align:right;
+    float:right;
+}
+#keskustelut{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#keskusteluotsikko{
+    float:left;
+}
+/*keskustelu sivu*/
+#keskusteluvalikko{
+    margin-bottom:20px;
+}
+#keskusteluvalikko #oikea{
+    float:right;
+}
+#viesti{
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+#viesti #kayttajantiedot{
+}
+#viesti #teksti{
+
+}
+#tapahtuma{
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    margin-bottom: 20px;
+}
+#lasnaolevat #tunnus{
+    float:left;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    margin-left: 5px;
+    padding: 2px;
+}
+/*Ohjauspaneeli sivu*/
+#ohjauspaneeli_yla_valikko{
+    margin-bottom: 20px;
+}
+#ohjauspaneeli #kayttajantiedot{
+
+}

@@ -1,0 +1,71 @@
+#uutisetsivu_vasen{
+    width:350px;
+    height:auto;
+    padding-right: 25px;
+    border-width:0px 2px 0px 0px;
+    border-style:solid;
+    border-color: #e86d1c;
+    font-size: 14px;
+    float: left;
+}
+#uutisetsivu_oikea{
+    height: auto;
+    width: 500px;
+    margin-left: 400px;
+    background-color: #d3d3d3;
+    padding: 10px;
+    overflow: hidden;
+    display: none;
+}
+#uutisetsivu_vasen #sivunumerot{
+    height: 30px;
+    margin-bottom: 15px;
+}
+#uutis_otsikko #otsikko{
+    margin-bottom:5px;
+}
+#uutis_otsikko #otsikko a{
+    font-size:18px;
+    font-weight:bold;
+    color:#000000;
+    text-decoration:none;
+}
+#uutis_otsikko #otsikko a:hover{
+    text-decoration:underline;
+}
+#uutis_otsikko #kirjoitusaika{
+    color: #e86d1c;
+}
+#uutis_otsikko #kuva{
+    float:right;
+}
+#uutis_otsikko #luelisaa{
+    color: #e86d1c;
+    cursor: pointer;
+}
+#uutis_otsikko #luelisaa:hover{
+    text-decoration: underline;
+}
+/*uutinen*/
+#uutinen #otsikko{
+    margin-bottom:5px;
+    font-size:22px;
+    font-weight:bold;
+    color:#000000;
+}
+#uutinen #tiedot{
+    font-size: 13px;
+    color: #e86d1c;;
+    margin-bottom: 15px;
+}
+#uutinen #kuvavasemmalle{
+    margin-right: 5px;
+    float:left;
+}
+#uutinen #kuvaus{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+#uutinen #teksti{
+    margin-top: 15px;
+}

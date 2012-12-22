@@ -1,0 +1,126 @@
+.kuvagalleria{
+    margin-bottom:20px;
+    padding:20px;
+    width: 880px;
+    background-color:#d3d3d3;
+    overflow: auto;
+}
+.kuvagalleria #takaisin{
+    width: 111px;
+    height: 31px;
+    float: left;
+    display: none;
+    background-image: URL(/Remix/kuvat/valikko/takaisin.png);
+}
+.kuvagalleria #sivunumerot{
+    float: right;
+    height: 30px;
+}
+.kuvagalleria .nimi{
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.kuvagalleria .kuvat{
+    min-height: 150px;
+    border-width: 0px 0px 4px 0px;
+    border-color: #FF9C5A;
+    border-style: solid;
+    padding-bottom: 30px;
+}
+.kuvagalleria .kuvat .kuva{
+    height: 150px;
+    width: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    margin: 0px 10px 0px 0px;
+    float: left;
+}
+
+/*Isona näytettävä kuva*/
+#isokuva-pohja{
+    position: fixed;
+    width: 100%;
+    top: 120px;
+    left: 0px;
+    z-index: 20;
+    /*display: none;*/
+}
+#isokuva{
+    width: 400px;
+    height: 300px;
+    position: relative;
+    left: 0;
+    padding: 10px;
+    background-color: transparent;
+    background-image: URL("/Remix/kuvat/pelaajakortit/tausta.png");
+    margin: 0 auto;
+    border-radius: 5px;
+    z-index: 22;
+    display: block;
+}
+#isokuva #yla{
+    width: 100%;
+    height: 20px;
+    text-align: right;
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+#isokuva #yla #sulje{
+    font-weight: bold;
+    cursor: pointer;
+}
+#isokuva #isokuva-content {
+    height: 270px;
+}
+#isokuva #edellinen, #isokuva #seuraava {
+    height: 222px;
+    width: 34px;
+    position: relative;
+    float: left;
+}
+#isokuva #edellinen #nuoli, #isokuva #seuraava #nuoli{
+    position: relative;
+    top: 97.5px;
+    width: 34px;
+    height: 70px;
+    background-image: URL("/Remix/kuvat/kuvakategoriat/edellinen.png");
+    cursor: pointer;
+}
+#isokuva #seuraava #nuoli{
+    background-image: URL("/Remix/kuvat/kuvakategoriat/seuraava.png");
+}
+#isokuva #kuva{
+    width: 320px;
+    height: 222px;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border:#ffffff solid 2px;
+    float: left;
+    margin-bottom: 5px;
+    border-radius: 15px;
+}
+#isokuva #kuva img {
+    border-radius: 15px;
+}
+#isokuva #kuvaus{
+    display: block;
+    clear: both;
+    text-align: center;
+    color: #ffffff;
+    width: 100%; 
+}
+#poista-isokuva{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 21;
+}

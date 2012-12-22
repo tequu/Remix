@@ -1,0 +1,26 @@
+poistaJoukkue-funktioon: poista kuvat kansioista
+poistaJoukkue-funktioon: poista sponsorien kuvat kansioista
+ohjauspaneeli-->johtokunta: poista taulukko kenttien ympäriltä
+
+Korjattavia:
+    Eri kuukautena mutta samana päivänä oleva kotiturnaus näkyy nykyisenä päivänä+kotiturnauksena.
+    Kun kalenterista vaihdetaan kuukautta, poistetaan titlet.
+    Kalenterin pelit listasta mahdollisuus mennä joukkueen pelitlistaan joukkueen nimestä.
+    Kirjaudutaessa menee edelliselle sivulle mistä tultiin kirjaudu sivulle.
+    Joukkueeseen liittymiseen valikkoon joukkue niin kauan näkyviin että on pelaaja ja yhteyshenkilö.
+    Pelitlistaan kotiturnaus.
+    Johtokunnan jäsenet oikeaan järjestykseen.
+    Tunnuksien yhdistäminen. 
+    Johtokunnan jäsenten järjestäminen.
+    Kirjaudunappi toimimaan entteristä.
+    Joukkueiden poistaminen kuntoon. 
+    Joukkueiden sivujen hallinnoijalle oikeus antaa oikeuksia omaan joukkueeseen.
+    Ohjauspaneeliin uudet fontit anskulta ja napit.
+
+Uusia:
+    Uutisten muokkaus
+    Kuvagalleria
+    Latauspankki
+    Toimintasuunnitelma
+    Kävijälaskuri
+    

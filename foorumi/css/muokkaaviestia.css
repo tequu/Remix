@@ -1,0 +1,43 @@
+#foorumi #muokkaaviestia {
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+#foorumi #muokkaaviestia #otsikko {
+    color: #ffffff;
+    background-color: #313131;
+    border-radius: 5px 5px 0px 0px;
+    height: 30px;
+    font-size: 18px;
+    margin: 0px;
+    padding: 5px 0px 0px 20px;
+    width: auto;
+}
+#foorumi #muokkaaviestia #lomake {
+    padding: 10px 0px 0px 20px;
+    overflow: hidden;
+}
+#foorumi #muokkaaviestia #viestinotsikko div, #foorumi #muokkaaviestia #teksti div{
+    width: 70px;
+    float: left;
+}
+#foorumi #muokkaaviestia #viestinotsikko .kentta input {
+    width: 740px;
+}
+#foorumi #muokkaaviestia #napit {
+    margin: 10px 0px 0px 70px;
+}
+#foorumi #muokkaaviestia .muokkaa {
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/muokkaa.png);
+    float: left;
+    cursor: pointer;
+}
+#foorumi #muokkaaviestia .tyhjenna {
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);
+    float: left;
+    cursor: pointer;
+}

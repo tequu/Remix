@@ -1,0 +1,52 @@
+#etusivu_uutiset{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#etusivu_uutis_otsikko{
+    margin: 0px 0px 20px 0px;
+    position: relative;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+}
+#etusivu_uutis_otsikko #kirjoitusaika{
+    color: #e86d1c;
+    font-size:15px;
+}
+#etusivu_uutis_otsikko a, #etusivu_uutis_otsikko a:visited, #etusivu_uutis_otsikko a:active{
+    color: #000000;
+    text-decoration: none;
+}
+#etusivu_uutis_otsikko a:hover{
+    color: #000000;
+    text-decoration: underline;
+}
+#etusivu_uutinen{
+    height: 90px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    overflow: hidden;
+}
+#etusivu_uutinen #kuva{
+    margin-top: 5px;
+    float: left;
+    margin-right: 5px;
+}
+#etusivu_uutinen #kuvaus{
+    font-weight: bold;
+}
+#etusivu_uutinen #luelisaa a{
+    color: #e86d1c;
+    text-decoration: none;
+}
+#etusivu_uutinen #luelisaa a:hover{
+    text-decoration: underline;
+}
+#etusivu_kuvat{
+    margin-bottom: 20px;
+    padding: 20px 30px 20px 30px;
+    width: 565px;
+    background-color: #d3d3d3;
+}

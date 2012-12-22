@@ -1,0 +1,29 @@
+/*kirjaudu siv*/
+#kirjaudu{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#kirjaudu #osa{
+    float: left;
+    width: 150px;
+}
+/*rekisteröi sivu*/
+#rekisteroi{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#rivi #kentannimi{
+    width:160px;
+    float:left;
+}
+#rivi #kentta{
+    width:140px;
+    float:left;
+}
+#rivi #lisakentta{
+    float:left;
+}

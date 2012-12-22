@@ -1,0 +1,34 @@
+#sivunumerot #sivunumero, #sivunumerot #valittusivunumero{
+    float: left;
+    margin-left: 5px;
+    color: #000000;
+    padding-top: 4px;
+    cursor: pointer;
+}
+#sivunumerot #ensimmainen, #sivunumerot #viimeinen, #sivunumerot #edellinen, #sivunumerot #seuraava{
+    float: left;
+    height: 30px;
+    width: 108px;
+    background-image: URL("/Remix/kuvat/valikko/ensimmainen.png");
+    cursor: pointer;
+}
+#sivunumerot #edellinen{
+    width: 39px;
+    background-image: URL("/Remix/kuvat/valikko/edellinen.png");
+}
+#sivunumerot #sivunumero a{
+    color: #000000;
+    text-decoration: none;
+}
+#sivunumerot #valittusivunumero{
+    cursor: default;
+    color: #e86d1c;
+}
+#sivunumerot #seuraava{
+    margin-left: 5px;
+    width: 39px;
+    background-image: URL("/Remix/kuvat/valikko/seuraava.png");
+}
+#sivunumerot #viimeinen{
+    background-image: URL("/Remix/kuvat/valikko/viimeinen.png");
+}

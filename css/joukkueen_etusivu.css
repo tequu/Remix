@@ -1,0 +1,21 @@
+#joukkue_tiedotukset{
+    margin-top: 43px;
+    margin-bottom:20px;
+    padding:30px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+
+#joukkue_tiedotus{
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+#joukkue_tiedotus_kirjoitusaika{
+    margin: 0px 0px 0px 20px;
+    font-weight: bold;
+    color: #e86d1c;
+}
+#joukkue_uusi_tiedotus{
+    color:#FF0000;
+}

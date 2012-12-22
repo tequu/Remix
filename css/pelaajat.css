@@ -1,0 +1,41 @@
+#pelaajat{
+    margin-top: 43px;
+    margin-bottom: 20px;
+    padding:30px 30px 20px 30px;
+    width: 565px;
+    background-color: #d3d3d3;
+}
+#pelaajat #pelaaja{
+    float: left;
+    width: 120px;
+    height: 220px;
+    margin-right: 22px;
+    overflow: hidden;
+    font-size: 11px;
+}
+#pelaajat #pelaaja:last-child{
+    margin-right: 0px;
+}
+#pelaajat #kuva{
+    background-color: #e86d1c;
+    border-radius: 10px;
+    width: 120px;
+    height: 180px;
+}
+#pelaajat #pelaaja #kuva #kapteeni, #pelaajat #pelaaja #kuva #maalivahti, #pelaajat #pelaaja #kuva #kapteenijamaalivahti{
+    background-image: URL("/Remix/kuvat/pelaajakortit/mini_kapteeni.png");
+    float: right;
+    margin-top: 138px;
+    width: 50px;
+    height: 42px;
+}
+#pelaajat #pelaaja #kuva #maalivahti{
+    background-image: URL("/Remix/kuvat/pelaajakortit/mini_maalivahti.png");
+}
+#pelaajat #pelaaja #kuva #kapteenijamaalivahti{
+    background-image: URL("/Remix/kuvat/pelaajakortit/mini_kapteenijamaalivahti.png");
+}
+#pelaajat #nimi{
+    margin-top: 5px;
+    text-align: center;
+}

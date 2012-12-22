@@ -1,0 +1,84 @@
+#foorumi #tapahtuma #in, #foorumi #tapahtuma #out{
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    width: 860px;
+    min-height: 100px;
+}
+#foorumi #tapahtuma #header {
+    color: #ffffff;
+    background-image: none;
+    background-color: #313131;
+    border-radius: 5px 5px 0px 0px;
+    height: 30px;
+    width: auto;
+    margin: 0;
+    padding: 5px 0px 0px 20px;
+    font-size: 18px;
+}
+#foorumi #tapahtuma #pelaajat {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+#foorumi #tapahtuma .pelaaja{
+    height: 19px;
+    float: left;
+    padding: 4px;
+    margin: 10px 0px 0px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ff8331;
+    box-shadow: 1px 1px 2px #888888;
+}
+#foorumi #ilmoittaudu {
+    float: right;
+    font-size: 16px;
+}
+#foorumi #ilmoittaudu .in, #foorumi #ilmoittaudu .out, #foorumi #ilmoittaudu .in_ilmoittaunut, #foorumi #ilmoittaudu .out_ilmoittautunut {
+    background-image: URL(/Remix/kuvat/valikko/in_grey.png);
+    width: 61px;
+    height: 31px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+#foorumi #ilmoittaudu .in:hover {
+    background-image: URL(/Remix/kuvat/valikko/in_green.png);
+}
+#foorumi #ilmoittaudu .out:hover {
+    background-image: URL(/Remix/kuvat/valikko/out_red.png);
+}
+#foorumi #ilmoittaudu .out, #foorumi #ilmoittaudu .out_ilmoittautunut {
+    background-image: URL(/Remix/kuvat/valikko/out_grey.png);
+}
+#foorumi #ilmoittaudu .in_ilmoittautunut {
+    cursor: default;
+    background-image: URL(/Remix/kuvat/valikko/in_green.png);
+}
+#foorumi #ilmoittaudu .out_ilmoittautunut {
+    cursor: default;
+    background-image: URL(/Remix/kuvat/valikko/out_red.png);
+}
+#foorumi #tapahtuma #kommentti {
+    width: 880px;
+    height: 31px;
+    margin-top: 10px;
+}
+#foorumi #tapahtuma #kommentti #teksti {
+    margin: 5px 5px 0px 10px;
+    float: left;
+}
+#foorumi #tapahtuma #kommentti #kommenttikentta {
+    margin: 5px 5px 0px 0px;
+    width: 676px;
+    border-width: 1px;
+    float: left;
+}
+#foorumi #tapahtuma #kommentti #laheta {
+    background-image: URL(/Remix/kuvat/valikko/laheta.png);
+    height: 31px;
+    width: 111px;
+    float: left;
+    cursor: pointer;
+}

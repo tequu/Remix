@@ -1,0 +1,19 @@
+Salibandy seura tarvitsee foorumit, joissa voidaan keskustella ja lis‰ksi ilmoittautua harjoitukseen ja peleihin sek‰ kysy‰ kysymyksi‰. Joukkueiden ja juokkueen j‰senten m‰‰r‰ on vaihteleva. Joukkueeseen kuuluu j‰seni‰ jotka voivat olla pelaajia, valmentajia tai huoltajia. Jokaisella joukkueella ja seuran johtokunnalla tulee olla oma keskustelualue, jota eiv‰t muut n‰e. N‰idem lis‰ksi on yksi julkinen keskustelualue, johon kaikki kirjautuneet voivat kirjoittaa. Uusia keskustelualueita on pystytt‰v‰ luomaan ja niihin on pystytt‰v‰ antaa oikeuksia, joko kaikille k‰ytt‰jille tai vain halutuille. Jokaisella keskustelualueella voi olla oma hallinnoiva henkilˆ.
+
+Keskustelualueilla on nimet. Nimi on joko joukkueen nimi jos kyseess‰ on joukkueen oma keskustelualue tai muuten k‰ytt‰j‰n m‰‰rittelem‰. Lis‰ksi keskustelu alueella voi olla kuvaus ja mailipvm. Keskustelualueet sis‰lt‰v‰t keskusteluja, joita k‰ytt‰j‰t voivat luoda. Yksi keskustelu voi n‰ky‰ joko vain yhdell‰ keskutelualueella tai monella. Luoja voi asettaa keskustelun n‰kym‰‰n niill‰ keskustelualueilla johon h‰nell‰ on oikeudet. Keskusteluista t‰ytyy tallentaa otsikko, luomisp‰iv‰, aloittaja sek‰ tapahtuma tai kysymys jos haluttu liitt‰‰ mukaan. Keskustelualuetta hallinnoiva voi myˆs m‰‰ritell‰ keskustelun niin ettei se n‰y pelaajille vaan vain muille joukkueen j‰senille. Keskustelut sis‰lt‰v‰t viestej‰.
+
+Tapahtumalla on nimi, tapahtuma(harkat, peli, muu), alkamisaika, jotka ovat pakollisia. Lis‰ksi on kuvaus, loppumisaika, ilmoittautumisen takaraja, ilmoittautumisen maksimi m‰‰r‰, lis‰tieto, paikka, jotka eiv‰t ole pakollisia. Tapahtumaan liittyy myˆs l‰sn‰ ja poissaolo ilmoittautumiset. Jonka voi tehd‰ jokainen pelaaja itse tai pyyt‰‰ kaveriaan tekem‰‰n sen. Ilmoittautumiseen voi laittaa viestin. Kaikki tapahtumat tulee n‰hd‰ myˆs yhdell‰ sivulla ilman keskusteluja.
+
+//Kysymykseen kuuluu kysymys, vaihtoehdot ja vastaus.
+
+Viesteihin pakollisina tietoina kuuluu kirjoitusaika, viesti, sek‰ kirjoittaja. Lis‰ksi viestille voidaan antaa otsikko. Jos otsikkoa ei anneta se on sama kuin keskustelun otsikko.
+
+Toimintoja:
+a) Joukkueiden lis‰‰minen. Samalla luodaan joukkueelle keskustelualue
+b) Keskustelualueiden luominen ja poistaminen
+c) Hallinnointi ja kirjoitus oikeuksien antaminen keskustelualueelle
+d) Keskustelujen luominen ja poistaminen, joko kysymyksen tai tapahtuman kanssa tai ilman
+e) Keskustelujen n‰kyvyyden m‰‰rittely
+f) Viestien l‰hetys keskusteluihin sek‰ poisto
+//g) Kysymyksiin vastaaminen
+h) L‰sn‰ ja poissaolo ilmoittautuminen

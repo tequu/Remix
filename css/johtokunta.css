@@ -1,0 +1,30 @@
+#johtokunta{
+    margin-bottom: 20px;
+    padding: 20px 30px 20px 30px;
+    width: 565px;
+    overflow: auto;
+    background-color: #d3d3d3;
+}
+#johtokunta #henkilo{
+    width: 565px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+#johtokunta #henkilo #arvonimi{
+    width: 200px;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 40px;
+    float:left;
+}
+#johtokunta #henkilo #nimi{
+    width: 365px;
+    font-size: 15px;
+    float: left;
+}
+#johtokunta #henkilo #tiedot{
+    width: 365px;
+    font-size: 13px;
+    float:left;
+    margin-bottom: 20px;
+}

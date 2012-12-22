@@ -1,0 +1,26 @@
+#joukkueen_valikko{
+    position: absolute;
+    width: 580px;
+    padding: 0px;
+    margin-left: 50px;
+}
+#joukkueen_valikko #nimi{
+    font-size: 20px;
+    margin: 10px 0px 15px;
+    font-weight: bold;
+    
+}
+#joukkueen_valikko #nimi a, #joukkueen_valikko #nimi a:hover, #joukkueen_valikko #nimi a:visited, #joukkueen_valikko #nimi a:active{
+    color: #000000;
+    text-decoration: none;
+}
+#joukkueen_valikko #nav{
+    height: 25px;
+}
+#joukkueen_valikko #nav #nappi{
+    float: left;
+    margin-right: 5px;
+    width: 91px;
+    height: 25px;
+    cursor: pointer;
+}

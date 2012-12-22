@@ -1,0 +1,67 @@
+#foorumi {
+    width: 880px;
+    margin: 0 auto;
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    padding: 20px;
+}
+#foorumi #otsikko, #foorumi #valiotsikko {
+    width: auto;
+    height: 40px;
+    color: #000000;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 5px 0px 0px 10px;
+}
+#foorumi #valiotsikko {
+    padding-top: 20px;
+}
+#foorumi #pohja{
+    width: 860px;
+    background-color: #ff8331;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0px 0px 0px;
+}
+#foorumi .keskustelualueet {
+    margin-bottom: 30px;
+}
+#foorumi .otsikko{
+    width: 840px;
+    height: 40px;
+    background-color: #313131;
+    color: #FFFFFF;
+    font-size: 24px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+#foorumi .keskustelualue{
+    width: 840px;
+    height: 50px;
+    background-color: #d3d3d3;
+    color: #000000;
+    border-radius: 10px;
+    margin: 10px;
+}
+#foorumi .keskustelualue .vasen, #foorumi .keskustelualue .keski, #foorumi .keskustelualue .oikea {
+    float: left;
+    width: 185px;
+    font-size: 12px;
+}
+#foorumi .keskustelualue .vasen {
+    width: 430px;
+    margin-left: 40px;
+}
+#foorumi .keskustelualue .vasen .nimi {
+    width: 430px;
+    font-size: 20px;
+    margin-top: 5px;
+}
+#foorumi .keskustelualue .vasen .nimi a {
+    color: #000000;
+    text-decoration: none;
+}
+#foorumi .keskustelualue .vasen .kuvaus {
+    font-size: 12px;
+}

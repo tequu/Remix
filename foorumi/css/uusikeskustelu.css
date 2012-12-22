@@ -1,0 +1,65 @@
+#foorumi #uusikeskustelu {
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    width: 860px;
+}
+#foorumi #uusikeskustelu #otsikko {
+    color: #ffffff;
+    background-color: #313131;
+    border-radius: 5px 5px 0px 0px;
+    height: 30px;
+    font-size: 18px;
+    margin: 0px;
+    padding: 5px 0px 0px 20px;
+    width: auto;
+}
+#foorumi #uusikeskustelu #lomake {
+    padding: 10px;
+    overflow: hidden;
+}
+#foorumi #uusikeskustelu #lomake #keskustelunotsikko div, #foorumi #uusikeskustelu #lomake #teksti div {
+    float: left;
+}
+#foorumi #uusikeskustelu #lomake #teksti {
+    margin-top: 5px;
+}
+#foorumi #uusikeskustelu #lomake .nimi{
+    width: 70px;
+}
+#foorumi #uusikeskustelu .kentta {
+    width: 740px;
+    padding: 0;
+    margin: 0;
+}
+#foorumi #uusikeskustelu #keskustelunotsikko .kentta input {
+    width: 740px;
+    margin: 0;
+    padding: 0;
+    border-width: 1px;
+    border-style: inset;
+}
+#foorumi #uusikeskustelu #teksti textarea {
+    width: 740px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    border-width: 1px;
+    border-style: inset;
+}
+#foorumi #uusikeskustelu #napit {
+    margin: 10px 0px 0px 70px;
+}
+#foorumi #uusikeskustelu .lisaa {
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/lisaa.png);
+    float: left;
+    cursor: pointer;
+}
+#foorumi #uusikeskustelu .tyhjenna {
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);
+    float: left;
+    cursor: pointer;
+}

@@ -1,0 +1,196 @@
+/*body*/
+body, html {
+    margin: 0px;
+    padding: 0px;
+    height:100%;
+    width:100%;
+    z-index:1;
+    position:relative;
+    background-color:#e86d1c;
+    font-family: Tahoma,Helvetica,sans-serif;
+    font-size: 15px;
+}
+
+/*header*/
+#header{
+    width:980px;
+    margin:0 auto;
+    height:223px;
+    background-image: URL("/Remix/kuvat/header.jpg");
+}
+
+/*pohja*/
+#container{
+    margin:0 auto;
+    height:auto;
+    width:970px;
+    padding:5px;
+    padding-bottom:20px;
+    background-color:#c0c0c0;
+    min-height: 350px;
+    font-family: Tahoma,Helvetica,sans-serif;
+    font-size: 15px;
+    overflow: auto;
+}
+#content, #levea_content{
+    margin: 20px 0px 0px 20px;
+    width: 635px;
+    overflow: hidden;
+}
+#levea_content{
+    width: 920px;
+}
+#pohja{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+    overflow: hidden;
+}
+.otsikko{
+    margin:0px 0px 20px 0px;
+    height:35px;
+    background-repeat: no-repeat;
+}
+.ala_otsikko{
+    margin:0 auto 10px;
+    text-decoration:underline;
+    font-size:20px;
+    font-weight:bold;
+}
+#keskelle{
+    text-align:center;
+    margin:0 auto;
+}
+#error{
+    color:#FF0000;
+}
+#floatleft {
+    float:left;
+}
+#floatright {
+    float:right;
+}
+#clear{
+    clear:both;
+}
+#tekstivasempaan{
+    text-align: left;
+}
+#bold{
+    font-weight: bold;
+}
+#oikea{
+    width:246px;
+    height:auto;
+    margin: 19px 27px 0px 0px;
+    float:right;
+}
+
+/*ohjauspaneeli sivu*/
+#ohjauspaneeli_linkki{
+    height:30px;
+    width:190px;
+    color:#000000;
+    text-align:center;
+    font-size:16px;
+    border:2px solid #000000;
+    padding-top:5px;
+    border-radius:25px;
+    background-image:URL("/Remix/kuvat/ohjauspaneeli_linkki.png");
+    float:left;
+    margin:0px 0px 30px 30px;
+    cursor:pointer;
+}
+#ohjauspaneeli{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#ohjauspaneeli_ala{
+    width:200px;
+    float:left;
+    margin-left:25px;
+    border-width:2px 2px 2px 2px;
+    border-style:solid;
+    border-color:#000000;
+    border-radius:25px;
+    padding-right:10px;
+    padding-left:20px;
+    padding-bottom:10px;
+}
+/*pelaajaohjauspaneeli*/
+#lisatieto{
+    margin-bottom:20px;
+}
+/*bannerit*/
+#bannerit{
+    width:200px;
+    float:right;
+    margin-right:5px;
+}
+.takaisin, .laheta, .kirjaudusisaan, .muokkaa{
+    margin: 20px 0px;
+    background-image:URL("/Remix/kuvat/valikko/takaisin.png");
+    width: 111px;
+    height: 31px;
+    cursor: pointer;
+}
+.laheta{
+    margin: 10px 0px;
+    background-image: URL("/Remix/kuvat/valikko/laheta.png");
+}
+.kirjaudusisaan{
+    margin-top: 0px;
+    background-image: URL('/Remix/kuvat/valikko/kirjaudu.png');
+    width: 118px;
+}
+.muokkaa{
+    background-image: URL('/Remix/kuvat/valikko/muokkaa.png');
+    width: 111px;
+    margin: 0px;
+    float: right;
+}
+/*Historia sivu*/
+#historia{
+    margin-bottom:20px;
+    padding:20px;
+    width: 585px;
+    background-color:#d3d3d3;
+}
+#vahvistus{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#unohtunutsalasana{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#historia_teksti{
+    margin-left:10px;
+}
+
+#fb{
+    margin: 0px 0px 0px 20px;
+    width: 585px;
+}
+#kavijalaskuri{
+    margin: 0px 0px 0px 20px;
+}
+#ullmax{
+    margin-top: 15px;
+    background-color:#e86d1c;
+    padding: 33px;
+    border-radius: 25px;
+    z-index: 0;
+}
+#tyttosaba{
+    height:171px;
+    margin-top: 15px;
+    background-image:URL("/Remix/kuvat/tyttosaba.jpg");
+}

@@ -1,0 +1,210 @@
+tiedotukset
+	id
+	tiedotus
+	kirjoitusaika
+	vanhenemisaika
+	vanhenemisaikap
+	joukkueetID
+uutiset
+	id
+	uutinen
+	kirjoitusaika
+	kirjoittaja
+	otsikko
+	kuvaus
+	kuva
+	asettele
+joukkueet
+	id
+	nimi
+	kapteeni
+	kerho
+	salasana
+	mailipvm
+	keskustelualueetID
+	jarjestysnumero
+	kausi
+pelaajat
+	roolitID
+	joukkueetID
+	tunnuksetID
+yhteyshenkilöt
+	roolitID
+	joukkueetID
+	tunnuksetID
+roolit
+	rooli
+	vari
+	
+tunnukset
+	id
+	login
+	salasana
+	email
+	etunimi
+	sukunimi
+	syntymavuosi
+	isadmin
+	enabled
+	estetty
+	nakyvattiedotID
+nakyvattiedot
+	id
+	email
+	etunimi
+	sukunimi
+	syntymavuosi
+tokenit
+	token
+	tunnuksetID
+	vieraskirjaID
+kirjautumistiedot
+	ip
+	aika
+	tunnuksetID
+oikeudet
+	keskustelualueetID
+	tunnuksetID
+	joukkueetID
+keskustelualueet_oikeudet
+	keskustelualueetID
+	tunnuksetID
+
+hallitus
+	id
+	etunimi
+	sukunimi
+	arvo
+	sahkoposti
+	puhelinnumero
+	jarjestysnumero
+	
+kategoriat
+	id
+	nimi
+	joukkueetID
+	jarjestysnumero
+kuvat
+	kuva
+	kuvateksti
+	kategoriatid
+
+pelaajakortti_lisatieto
+	nimi
+	lisatieto
+	jarjestysnumero
+	pelaajatID
+
+peliryhmat
+	id
+	nimi
+	joukkueetID
+	oletus
+pelit
+	id
+	vastustaja
+	aika
+	remixkoti
+	kotimaalit
+	vierasmaalit
+	pelipaikka
+	pelattu
+	kotiturnaus
+	peliryhmatID
+
+sarjataulukkoryhmat
+	id
+	nimi
+	joukkueetID
+	oletus
+sarjataulukot
+	id
+	joukkue
+	O
+	V
+	T
+	H
+	TM
+	PM
+	P
+	jarjestysnumero
+	sarjataulukkoryhmatID
+
+sponsorit
+	id
+	kuva
+	joukkueid
+	
+tilastoryhmat
+	id
+	nimi
+	joukkueetID
+	oletus
+	kokonaistilastoon
+tilastot
+	id
+	pelaajatID
+	O
+	RLM
+	RLY
+	RM
+	S
+	M
+	+-
+	tilastoryhmatID
+
+vieraskirja
+	id
+	kirjoittaja
+	email
+	aika
+	seura
+	joukkue
+	viesti
+	ip
+	poistettu
+	tunnuksetID
+	enabled
+
+keskustelualueet_ryhmat
+	id
+	otsikko
+keskustelualueet
+	id
+	nimi
+	kuvaus
+	keskustelualueet_ryhmatID
+	julkinen
+keskustelualueet_keskustelut
+	keskustelutID
+	keskustelualueetID
+keskustelut
+	id
+	otsikko
+	aloitusaika
+	aloittaja
+	nakyypelaajille
+	tapahtumatID
+viestit
+	id
+	otsikko
+	viesti
+	lahetysaika
+	keskustelutID
+	tunnuksetID
+tapahtumat
+	id
+	nimi
+	tapahtuma
+	alkamisaika
+	loppumisaika
+	kuvaus
+	ilmotakaraja
+	ilmomaxmaara
+	lisatieto
+	paikka
+paikallaolo
+	lasna
+	viesti
+	tunnuksetID
+	tapahtumatID

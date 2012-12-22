@@ -1,0 +1,80 @@
+#pelit_pohja{
+    margin-top: 43px;
+    margin-bottom:20px;
+    padding:30px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+}
+#pelit{
+    background-image: URL("/Remix/kuvat/sarjataulukko-tausta.png");
+    width: 575px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+#pelit #ryhma{
+    width: 465px;
+    height: 29px;
+    padding-top: 7px;
+    padding-left: 10px;
+    float: left;
+}
+#pelit #kausi{
+    height: 29px;
+    width: 100px;
+    padding-top: 7px;
+    float: left;
+}
+#pelit #tiedot, #pelit #joukkue{
+    margin-left: 1px;
+    width: 574px;
+    height: 36px;
+}
+#pelit #tiedot{
+    background-image: URL("/Remix/kuvat/sarjataulukko-musta.png");
+    color: #ff8331;
+}
+#pelit #pvm, #pelit #aika, #pelit #vastustaja, #pelit #paikka, #pelit #tulos{
+    float: left;
+    width: 60px;
+    height: 29px;
+    font-size: 14px;
+    margin-top: 7px;
+}
+#pelit #pvm{
+    padding-left: 10px;
+}
+#pelit #vastustaja, #pelit #paikka{
+    width: 182px;
+}
+#pelit #tulos{
+    width: 80px;
+    text-align: center;
+}
+#pelit #tasapeli, #pelit #voitto, #pelit #havio{
+    height: 36px;
+    float:left;
+    background-color: #FCB404;
+}
+#pelit #voitto{
+   background-color: #0fc106; 
+}
+#pelit #havio{
+    background-color: #d53200;
+}
+#pelit .tumma{
+    background-image: URL('/Remix/kuvat/sarjataulukko-oranssi.png');
+}
+#pelit_pohja #peliryhma{
+    margin-top: 20px;
+}
+
+#pelit_pohja #pelit #harmaa{
+    height: 29px;
+    padding-top: 2px;
+    background-image: URL('/Remix/kuvat/sarjataulukko-harmaa.png');
+    background-repeat: no-repeat;
+}
+
+#pelit_pohja #pelit #joukkue #nimi{
+    margin-left: 10px;
+}

@@ -1,0 +1,55 @@
+#foorumi #keskustelut{
+    width: 860px;
+    background-color: #d3d3d3;
+    color: #000000;
+    font-size: 12px;
+    border-radius: 10px;
+}
+#foorumi #otsikko .uusikeskustelu-nappi, #foorumi #otsikko .uusitapahtuma-nappi {
+    background-image: URL(/Remix/kuvat/valikko/uusikeskustelu.png);
+    height: 31px;
+    width: 111px;
+    float: right;
+    margin-top: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 0px;
+}
+#foorumi #otsikko .uusitapahtuma-nappi {
+    background-image: URL(/Remix/kuvat/valikko/uusitapahtuma.png);
+}
+#foorumi #keskustelut .viiva {
+    width: 860px;
+    height: 5px;
+    background-color: #ff8331;
+}
+#foorumi #keskustelut .keskustelu{
+    width: 860px;
+    height: 50px;
+}
+#foorumi #keskustelut .keskustelu .vasen{
+    width: 430px;
+    margin: 0px 0px 0px 40px;
+    padding-top: 2px;
+    float: left;
+}
+#foorumi #keskustelut .keskustelu .nimi{
+    font-size: 20px;
+    color: #ff8331;
+}
+#foorumi #keskustelut .keskustelu .nimi a{
+    text-decoration: none;
+    color: #000000;
+}
+#foorumi #keskustelut .keskustelu .keski{
+    width: 185px;
+    padding-top: 2px;
+    float: left;
+}
+#foorumi #keskustelut .keskustelu .oikea{
+    width: 185px;
+    float: left;
+    padding-top: 7px;
+    margin: 0px;
+}

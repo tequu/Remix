@@ -1,0 +1,20 @@
+#joukkueet{
+    margin-bottom:20px;
+    padding:20px 30px 20px 30px;
+    width: 565px;
+    background-color:#d3d3d3;
+    overflow: hidden;
+}
+#joukkueet #osa{
+    float:left;
+    min-width: 140px;
+    margin-right: 50px;
+}
+#joukkueet #osa #nimi{
+    margin-bottom: 5px;
+}
+#joukkueet #osa #nimi a, #joukkueet #osa #nimi a:hover, #joukkueet #osa #nimi a:visited, #joukkueet #osa #nimi a:active{
+    color: #000000;
+    font-size: 14px;
+    text-decoration: none;
+}
