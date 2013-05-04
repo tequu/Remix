@@ -9,14 +9,9 @@ include("/home/fbcremix/public_html/Remix/ohjelmat/oikea.php");
         $kysely = kysely($yhteys, "SELECT id, uutinen, UNIX_TIMESTAMP(kirjoitusaika) kirjoitusaika, otsikko, kuvaus, kuva FROM uutiset ORDER BY kirjoitusaika DESC LIMIT 0,4");
         if ($tulos = mysql_fetch_array($kysely)) {
             $maxkirjaimia = 210;
-            $kuvaus = $tulos['kuvaus'];
-            if (strlen($tulos['kuvaus']) >= $maxkirjaimia) {
-                $kuvaus = substr($kuvaus, 0, strrpos($kuvaus, " ", $maxkirjaimia - strlen($kuvaus)));
-            } elseif (strlen($tulos['uutinen']) + strlen($tulos['kuvaus']) >= $maxkirjaimia) {
-                $lopetus = strlen($tulos['uutinen']) - ($maxkirjaimia - strlen($tulos['kuvaus']));
-                $uutinen = substr($tulos['uutinen'], 0, strrpos($tulos['uutinen'], " ", -$lopetus));
-            } else {
-                $uutinen = $tulos['uutinen'];
+            $kuvaus = katkaiseTeksti($tulos['kuvaus'], $maxkirjaimia);
+            if(strlen($kuvaus) < $maxkirjaimia){
+                $uutinen = katkaiseTeksti($tulos['uutinen'], $maxkirjaimia - strlen($kuvaus));
             }
             ?>
             <div id="etusivu_uutis_otsikko"><span id="kirjoitusaika"><?php echo date("d.m.Y", $tulos['kirjoitusaika']); ?></span> 
@@ -53,6 +48,14 @@ include("/home/fbcremix/public_html/Remix/ohjelmat/oikea.php");
     </div>
     <div id="etusivu_kuvat">
         <div class="otsikko" style="background-image:URL('/Remix/kuvat/uusimmat-kuvat.png')"></div>
+        <?php
+        $kysely = kysely($yhteys, "SELECT kuva, kuvakategoriatID FROM kuvat ORDER BY lahetysaika DESC LIMIT 0,4");
+        while ($tulos = mysql_fetch_array($kysely)) {
+            ?>
+            <a href="/Remix/kuvagalleria.php"><div class="kuva" style="background-image: URL('/Remix/kuvat/kuvakategoriat/<?php echo $tulos['kuvakategoriatID'] . "/" . $tulos['kuva']; ?>')"></div></a>
+                <?php
+            }
+            ?>
     </div>  
 </div>
 <?php

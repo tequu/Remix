@@ -1,5 +1,5 @@
 <?php
-$kirjautunut = true;
+$kirjautunut = false;
 include("/home/fbcremix/public_html/Remix/yla.php");
 ?>
 <div id="content">

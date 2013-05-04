@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
 } else {
     $joukkueid = isset($_GET['joukkueid'])?mysql_real_escape_string($_GET['joukkueid']):0;
     $kysely = mysql_query("SELECT kk.id id, nimi, maara kuvia FROM kuvakategoriat kk LEFT OUTER JOIN 
-        (SELECT DISTINCT kuvakategoriatID, count(id) maara FROM kuvat) k ON kk.id=k.kuvakategoriatID
+        (SELECT kuvakategoriatID, count(id) maara FROM kuvat GROUP BY kuvakategoriatID) k ON kk.id=k.kuvakategoriatID
         WHERE joukkueetID='".$joukkueid."'");
     $kategoriat = array();
     while($tulos = mysql_fetch_array($kysely)){

@@ -26,7 +26,7 @@ include("/home/fbcremix/public_html/Remix/yla.php");
                     $viimeinen = false;
                     $nuolet = true;
                     $ejav = true;
-                    include("/home/fbcremix/public_html/Remix/ohjelmat/sivunumerot.php");
+                    tulostasivunumerot($maara, $ysm, $sivu, $linkki, $viimeinen, $nuolet, $ejav);
                     ?>
                 </div>
                 <div id="clear"></div>

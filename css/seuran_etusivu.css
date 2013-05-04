@@ -49,4 +49,16 @@
     padding: 20px 30px 20px 30px;
     width: 565px;
     background-color: #d3d3d3;
+    overflow: hidden;
+}
+#etusivu_kuvat .kuva {
+    float: left;
+    height: 100px;
+    width: 118px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-width: 1px;
+    border-color: #000000;
+    border-style: solid;
+    margin: 0px 20px 0px 0px;
 }

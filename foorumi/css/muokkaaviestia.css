@@ -34,10 +34,7 @@
     float: left;
     cursor: pointer;
 }
-#foorumi #muokkaaviestia .tyhjenna {
-    width: 111px;
-    height: 31px;
-    background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);
+#foorumi #muokkaaviestia .takaisin {
     float: left;
-    cursor: pointer;
+    margin: 0;
 }

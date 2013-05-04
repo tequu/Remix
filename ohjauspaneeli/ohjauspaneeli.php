@@ -8,6 +8,7 @@
                 $masteroikeudet = false;
                 $adminoikeudet = false;
                 $joukkueoikeudet = false;
+                
                 if (tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
                     $masteroikeudet = true;
                 } else {

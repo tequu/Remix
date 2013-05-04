@@ -1,11 +1,37 @@
 <?php
+
 //Tarkistaa onko käyttäjällä näkyvyys oikeudet keskustelualueelle
-function tarkistaNakyvyysOikeudetKeskustelualueelle($yhteys, $keskustelualue){
-    if(tarkistaNakyvyysOikeudet($yhteys, 0, $keskustelualue)){
+function tarkistaNakyvyysOikeudetKeskustelualueelle($yhteys, $keskustelualue) {
+    $kysely = kysely($yhteys, "SELECT julkinen FROM keskustelualueet WHERE id='" . $keskustelualue . "'");
+    $tulos = mysql_fetch_array($kysely);
+    if ($tulos['julkinen']) {
         return true;
+    }
+    if (tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
+        return true;
+    }
+    $kayttaja = mysql_real_escape_string($_SESSION['id']);
+    //Tarkistetaan hallinta oikeudet
+    if (tarkistaHallintaOikeudet($yhteys, "keskustelualueetID", $keskustelualue)) {
+        return true;
+    }
+    //Tarkistetaan näkyvyys oikdeudet
+    $kysely = kysely($yhteys, "SELECT k.id FROM keskustelualueoikeudet RIGHT OUTER JOIN keskustelualueet k ON keskustelualueetID=k.id " .
+            "WHERE julkinen='1' OR (k.id='" . $keskustelualue . "' AND tunnuksetID='" . $kayttaja . "')");
+    while ($tulos = mysql_fetch_array($kysely)) {
+        if ($tulos['id'] == $keskustelualue) {
+            return true;
+        }
+    }
+    $kysely = kysely($yhteys, "SELECT id FROM joukkueet WHERE keskustelualueetID='" . $keskustelualue . "'");
+    if ($tulos = mysql_fetch_array($kysely)) {
+        if (tarkistaNakyvyysOikeudetJoukkueeseen($yhteys, $tulos['id'])) {
+            return true;
+        }
     }
     return false;
 }
+
 //Tarkistetaan onko hallinta oikeudet keskustelualueelle
 function tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue) {
     global $siirry;
@@ -22,19 +48,39 @@ function tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue) {
         siirry("eioikeuksia.php");
     return false;
 }
-function tarkistaNakyvyysOikeudetJoukkueeseen($yhteys, $joukkue){
-    if(tarkistaNakyvyysOikeudet($yhteys, 0, $joukkue)){
+
+function tarkistaNakyvyysOikeudetJoukkueeseen($yhteys, $joukkue) {
+    if (tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
         return true;
     }
-    return false;
+    $kayttaja = mysql_real_escape_string($_SESSION['id']);
+    //Tarkistetaan ensin onko hallinta oikeudet
+    if (tarkistaHallintaoikeudet($yhteys, "joukkueetID", $joukkue)) {
+        return true;
+    }
+    //Jos ei nii tarkistetaan vielä näkyvyys
+    $kysely = kysely($yhteys, "SELECT joukkueetID FROM pelaajat WHERE tunnuksetID='" . $kayttaja . "'");
+    while ($tulos = mysql_fetch_array($kysely)) {
+        if ($tulos['joukkueetID'] == $joukkue) {
+            return true;
+        }
+    }
+    $kysely = kysely($yhteys, "SELECT joukkueetID FROM yhteyshenkilot WHERE tunnuksetID='" . $kayttaja . "'");
+    while ($tulos = mysql_fetch_array($kysely)) {
+        if ($tulos['joukkueetID'] == $joukkue) {
+            return true;
+        }
+    }
 }
+
 //Tarkistaa onko käyttäjällä hallinta oikeudet joukkueeseen
-function tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue){
-    if(tarkistaHallintaOikeudet($yhteys, "joukkueetID", $joukkue)){
+function tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue) {
+    if (tarkistaHallintaOikeudet($yhteys, "joukkueetID", $joukkue)) {
         return true;
     }
     return false;
 }
+
 /**
  * Tarkistaa onko käyttäjällä halutut admin oikeudet
  * 
@@ -55,53 +101,6 @@ function tarkistaAdminOikeudet($yhteys, $admin) {
     return false;
 }
 
-/**
- * Tarkistaa pystyykö käyttäjä näkemään joukkueen tiedot tai keskustelualueen.
- * 
- * @param type $joukkue Joukkue johon kysytään oikeuksia
- * @param type $keskustelualue Keskustelualue johon kysytään oikeuksia
- * @return boolean True jos käyttäjällä on oikeudet, muuten false.
- */
-function tarkistaNakyvyysOikeudet($yhteys, $joukkue, $keskustelualue) {
-    if (tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
-        return true;
-    }
-    tarkistaKirjautuneenTunnus($yhteys);
-    $kayttaja = mysql_real_escape_string($_SESSION['id']);
-    //Jos saatiin joukkue
-    if ($joukkue != 0) {
-        //Tarkistetaan ensin onko hallinta oikeudet
-        if (tarkistaHallintaoikeudet($yhteys, "joukkueetID", $joukkue)) {
-            return true;
-        }
-        //Jos ei nii tarkistetaan vielä näkyvyys
-        $kysely = kysely($yhteys, "SELECT joukkueetID FROM pelaajat, yhteyshenkilot WHERE tunnuksetID='" . $kayttaja . "'");
-        while ($tulos = mysql_fetch_array($kysely)) {
-            if ($tulos['joukkueetID'] == $joukkue) {
-                return true;
-            }
-        }
-    }
-    //Jos taas keskustelualue
-    if ($keskustelualue != 0) {
-        //Tarkistetaan hallinta oikeudet
-        if (tarkistaHallintaOikeudet($yhteys, "keskustelualueetID", $keskustelualue)) {
-            return true;
-        }
-        //Tarkistetaan näkyvyys oikdeudet
-        $kysely = kysely($yhteys, "SELECT k.id FROM keskustelualueoikeudet RIGHT OUTER JOIN keskustelualueet k ON keskustelualueetID=k.id WHERE julkinen='1' OR (k.id='" . $keskustelualue . "' AND tunnuksetID='" . $kayttaja . "')");
-        while ($tulos = mysql_fetch_array($kysely)) {
-            if ($tulos['id'] == $keskustelualue) {
-                return true;
-            }
-        }
-        $kysely = kysely($yhteys, "SELECT id FROM joukkueet WHERE keskustelualueetID='".$keskustelualue."'");
-        if($tulos = mysql_fetch_array($kysely)){
-            tarkistaNakyvyysOikeudet($yhteys, $tulos['joukkueid'], 0);
-        }
-    }
-    return false;
-}
 //Tarkistaa hallinta oikudet
 function tarkistaHallintaOikeudet($yhteys, $kumpi, $vaadittava) {
     //Tarkistetaan, jos Masteradmin
@@ -129,4 +128,5 @@ function tarkistaHallintaOikeudet($yhteys, $kumpi, $vaadittava) {
     }
     return false;
 }
+
 ?>

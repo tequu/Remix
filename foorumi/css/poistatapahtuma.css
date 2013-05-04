@@ -1,0 +1,26 @@
+#foorumi #poistatapahtuma #otsikko{
+    padding: 0px;
+}
+#foorumi #poistatapahtuma #nimi{
+    font-size: 18px;
+    padding: 0;
+    margin-bottom: 10px;
+}
+#foorumi #poistatapahtuma #napit {
+    margin: 10px 0px 0px 0px;
+    overflow: auto;
+}
+#foorumi #poistatapahtuma .poista {
+    margin: 0;
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/poista.png);
+    float: left;
+}
+#foorumi #poistatapahtuma .takaisin {
+    margin: 0;
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/takaisin.png);
+    float: left;
+}

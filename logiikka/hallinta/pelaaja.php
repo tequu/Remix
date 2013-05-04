@@ -32,7 +32,7 @@ function lisaaPelaajat($yhteys) {
     $joukkue = mysql_real_escape_string($_GET['joukkue']);
     $pelaajat = explode("|", mysql_real_escape_string($_POST['pelaajat']));
     if (!tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue) || !tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue)) {
-        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia lisätä pelaajia " . haeJoukkueenNimi($yhteys, $joukkue) . " joukkueeseen.";
+        $_SESSION['eioikeuksia'] = "1Sinulla ei ole oikeuksia lisätä pelaajia " . haeJoukkueenNimi($yhteys, $joukkue) . " joukkueeseen.";
         if ($siirry)
             siirry("eioikeuksia.php");
         $error = $_SESSION['eioikeuksia'];

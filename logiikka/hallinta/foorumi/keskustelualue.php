@@ -1,24 +1,31 @@
 <?php
 
-
-
-//Uusi keskustelualue ryhmä
-function uusiKeskustelualueRyhma($yhteys) {
-    global $okeskustelualueryhma;
-    if (!tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
-        $_SESSION['eioikeuksa'] = "Sinulla ei ole oikeuksia luoda keskustelualue ryhmiä.";
+//Lisää näkyvyys oikeudet käyttäjälle
+function lisaaNakyvyysOikeudet($yhteys) {
+    global $error, $okayttajat;
+    if (!tarkistaAdminOikeudet($yhteys, "MasterAdmin")) {
+        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia lisätä oikeuksia käyttäjille.";
         siirry("eioikeuksia.php");
     }
-    global $error;
-    $otsikko = mysql_real_escape_string(trim($_POST['otsikko']));
-    //Tarkistetaan että saatiin nimi
-    if (empty($otsikko)) {
-        $error = "Et antanut nimeä.";
-        return;
+    $kayttajatid = mysql_real_escape_string(trim($_POST['kayttajatid']));
+    $keskustelualueet = $_POST['lisattavatoikeudet'];
+    //Tarkistetaan tunnuksen olemassaolo
+    if (!tarkistaTunnuksenOlemassaOlo($yhteys, $kayttajatid)) {
+        $_SESSION['virhe'] = "Käyttäjää ei löytynyt.";
+        siirry("virhe.php");
     }
-    //Luodaan uusi ryhmä
-    kysely($yhteys, "INSERT INTO keskustelualueryhmat(otsikko) VALUES ('" . $otsikko . "')");
-    ohjaaOhajuspaneeliin($okeskustelualueryhma, "");
+    //Jos saatiin oikeuksia mitä halutaan antaa
+    if (!empty($keskustelualueet)) {
+        //Luodaan kaikista yksi sql-lause
+        $sql = "INSERT INTO keskustelualueoikeudet (keskustelualueetID, tunnuksetID) VALUES ";
+        foreach ($keskustelualueet as $keskustelualue) {
+            $keskustelualue = mysql_real_escape_string($keskustelualue);
+            $sql .= "('" . $keskustelualue . "', '" . $kayttajatid . "'), ";
+        }
+        $sql = substr($sql, 0, -2);
+        kysely($yhteys, $sql);
+    }
+    ohjaaOhajuspaneeliin($okayttajat, "&mode=muokkaa&kayttajatid=" . $kayttajatid);
 }
 
 //Uusi keskustelualue
@@ -44,82 +51,34 @@ function uusiKeskustelualue($yhteys) {
     }
     //Tarkistetaan ettei yritetty luoda Joukkueet otsikon alle
     $kysely = kysely($yhteys, "SELECT otsikko FROM keskustelualueryhmat WHERE id='" . $keskustelualueryhmatid . "'");
-    while ($tulos = mysql_fetch_array($kysely)) {
+    if ($tulos = mysql_fetch_array($kysely)) {
         if ($tulos['otsikko'] == "Joukkueet") {
             $error = "Luodaksesi uuden keskustelualueen tähän ryhmään sinun täytyy luoda uusi joukkue.";
             return;
         }
     }
 
-    kysely($yhteys, "INSERT INTO keskustelualueet (nimi, kuvaus, keskustelualueryhmatID, julkinen) ".
-            "VALUES ('" . $nimi . "', '" . $kuvaus . "', '" . $keskustelualueryhmatid . "', '" . $julkinen . "')");
-    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=".$keskustelualueryhmatid);
-}
-
-//Muokkaa keskustelualueen ryhmän nimeä
-function muokkaaKeskustelualueenRyhmanNimea($yhteys) {
-    global $error, $okeskustelualueryhma;
-    if (!tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
-        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia muokata ryhmää.";
-        siirry("eioikeuksia.php");
-    }
-    $ryhma = mysql_real_escape_string($_POST['ryhma']);
-    $otsikko = mysql_real_escape_string(trim($_POST['otsikko']));
-    $kysely = kysely($yhteys, "SELECT otsikko FROM keskustelualueryhmat WHERE id='" . $ryhma . "'");
-    if ($tulos = mysql_fetch_array($kysely)) {
-        //Tarkistetaan ettei yritetä muokata kiellettyjä keskustelualueita
-        if ($tulos['otsikko'] == "Joukkueet") {
-            $error = "Yleistä ja Joukkueet rymiä ei voida muokata.";
-            return false;
-        }
-    }
-    //Tarkistetaan että saatiin nimi
-    if (empty($otsikko)) {
-        $error = "Et antanut nimeä<br />";
-        return;
-    }
-    kysely($yhteys, "UPDATE keskustelualueryhmat SET otsikko='" . $otsikko . "' WHERE id='" . $ryhma . "'");
-    ohjaaOhajuspaneeliin($okeskustelualueryhma, "");
-}
-
-//Poista keskustelualue ryhmä
-function poistaKeskustelualueRyhma($yhteys) {
-    global $error, $okeskustelualueryhma;
-    if (!tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
-        $_SESSION['eioikeuksa'] = "Sinulla ei ole oikeuksia poistaa keskustelualue ryhmiä.";
-        siirry("eioikeuksia.php");
-    }
-    $ryhma = mysql_real_escape_string($_POST['ryhma']);
-    $kysely = kysely($yhteys, "SELECT otsikko FROM keskustelualueryhmat WHERE id='" . $ryhma . "'");
+    $kysely = kysely($yhteys, "SELECT jarjestysnumero FROM keskustelualueet WHERE keskustelualueryhmatID='" . $keskustelualueryhmatid . "' ORDER BY jarjestysnumero DESC LIMIT 0,1");
     $tulos = mysql_fetch_array($kysely);
-    if ($tulos['otsikko'] == "Joukkueet") {
-        $error = "Joukkueet ryhmää ei voida poistaa.";
-        return;
-    }
-    //Tarkistetaan että kaikki keskustelualueet on poistettu ryhmän alta ennen poistoa
-    $kysely = kysely($yhteys, "SELECT id FROM keskustelualueet WHERE keskustelualueryhmatID='" . $ryhma . "'");
-    if ($tulos = mysql_fetch_array($kysely)) {
-        $error = "Kaikki ryhmä keskustelualueet on poistettava ennen kuin voit poistaa ryhmän.";
-        return;
-    }
-    //Poistetaan
-    kysely($yhteys, "DELETE FROM keskustelualueryhmat WHERE id='" . $ryhma . "'");
-    ohjaaOhajuspaneeliin($okeskustelualueryhma, "");
+    kysely($yhteys, "INSERT INTO keskustelualueet (nimi, kuvaus, keskustelualueryhmatID, julkinen, jarjestysnumero) " .
+            "VALUES ('" . $nimi . "', '" . $kuvaus . "', '" . $keskustelualueryhmatid . "', '" . $julkinen . "', '" . ($tulos['jarjestysnumero'] + 1) . "')");
+    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=" . $keskustelualueryhmatid);
 }
 
 //Muokkaa keskustelualueen tietoja
 function muokkaaKeskustelualuetta($yhteys) {
     global $error, $okeskustelualue;
-    if (!tarkistaAdminOikeudet($yhteys, "Admin")) {
-        $_SESSION['eioikeuksa'] = "Sinulla ei ole oikeuksia muokata keskustelualueita.";
-        siirry("eioikeuksia.php");
-    }
+
     $keskustelualueryhmatid = mysql_real_escape_string($_GET['keskustelualueryhmatid']);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     $nimi = mysql_real_escape_string($_POST['nimi']);
     $kuvaus = mysql_real_escape_string($_POST['kuvaus']);
     $julkinen = mysql_real_escape_string($_POST['julkinen']);
-    
+
+    if (!tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue)) {
+        $_SESSION['eioikeuksa'] = "Sinulla ei ole oikeuksia muokata keskustelualueita.";
+        siirry("eioikeuksia.php");
+    }
     if (tarkistaOnkoJoukkueenKeskustelualue($yhteys, $keskustelualue)) {
         $error = "Tätä keskustelualuetta ei voida muokata. Kuvausta voidaan muokata joukkueiden hallinnan kautta.<br />";
         return false;
@@ -138,20 +97,19 @@ function muokkaaKeskustelualuetta($yhteys) {
         return false;
     }
     kysely($yhteys, "UPDATE keskustelualueet SET nimi='" . $nimi . "', kuvaus='" . $kuvaus . "', julkinen='" . $julkinen . "' WHERE id='" . $keskustelualue . "' AND keskustelualueryhmatID='" . $keskustelualueryhmatid . "'");
-    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=".$keskustelualueryhmatid);
+    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=" . $keskustelualueryhmatid);
 }
 
 //Poiste keskustelualue
 function poistaKeskustelualue($yhteys) {
     global $error, $okeskustelualue;
-    if (!tarkistaAdminOikeudet($yhteys, "Admin")) {
+    if (!tarkistaAdminOikeudet($yhteys, "MasterAdmin")) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia poistaa keskustelualueita.";
         siirry("eioikeuksia.php");
     }
-    $keskustelualueryhmatid = mysql_real_escape_string($_GET['keskustelualueryhmatid']);
+    $keskustelualueryhmatid = mysql_real_escape_string($_POST['keskustelualueryhmatid']);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
-    $kysely = kysely($yhteys, "SELECT k.id FROM keskustelualueet k, keskustelualueryhmat kr WHERE keskustelualueryhmatID=kr.id AND k.id='".$keskustelualue."' AND kr.id='".$keskustelualueryhmatid."'");
-    if(!$tulos = mysql_fetch_array($kysely)){
+    if (tarkistaKeskustelualueetOlemassaOlo($yhteys, $keskustelualue)) {
         $_SESSION['virhe'] = "Keskustelualuetta ei löytynyt.";
         siirry("virhe.php");
     }
@@ -161,12 +119,14 @@ function poistaKeskustelualue($yhteys) {
         return false;
     }
     //Poistetaan keskustelualueelta viestit, paikallaolot, tapahtumat, keskustelut ja keskustelualue
-    kysely($yhteys, "DELETE FROM viestit WHERE keskustelutID IN (SELECT id keskustelutID FROM keskustelut, keskustelualuekeskustelut WHERE keskustelutID=id AND keskustelualueetID='" . $keskustelualue . "')");
+    kysely($yhteys, "DELETE FROM viestit WHERE keskustelutID IN (SELECT keskustelutID FROM keskustelualuekeskustelut WHERE keskustelualueetID='" . $keskustelualue . "')");
     kysely($yhteys, "DELETE FROM paikallaolo WHERE tapahtumatID IN (SELECT tapahtumatID FROM keskustelut k, keskustelualuekeskustelut kk WHERE k.id=keskustelutID AND keskustelualueetID='" . $keskustelualue . "')");
     kysely($yhteys, "DELETE FROM tapahtumat WHERE id IN (SELECT tapahtumatID FROM keskustelut k, keskustelualuekeskustelut kk WHERE k.id=keskustelutID AND keskustelualueetID='" . $keskustelualue . "')");
     kysely($yhteys, "DELETE FROM keskustelut WHERE id IN (SELECT keskustelutID id FROM keskustelualuekeskustelut WHERE keskustelualueetID='" . $keskustelualue . "')");
+    kysely($yhteys, "DELETE FROM keskustelualueoikeudet WHERE keskustelualueetID='".$keskustelualue."'");
+    kysely($yhteys, "DELETE FROM oikeudet WHERE keskustelualueetID='".$keskustelualue."'");
     kysely($yhteys, "DELETE FROM keskustelualueet WHERE id='" . $keskustelualue . "' AND keskustelualueryhmatID='" . $keskustelualueryhmatid . "'");
-    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=".$keskustelualueryhmatid);
+    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=" . $keskustelualueryhmatid);
 }
 
 //Siirrä keskustelualue toiseen ryhmään
@@ -176,9 +136,14 @@ function siirraKeskustelualue($yhteys) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksa siirtää keskustelualueita.";
         siirry("eioikeuksia.php");
     }
-    $keskustelualueryhmatid = mysql_real_escape_string($_GET['keskustelualueryhmatid']);
+    $keskustelualueryhmatid = mysql_real_escape_string($_POST['keskustelualueryhmatid']);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     $mryhma = mysql_real_escape_string($_POST['mryhma']);
+    $kysely = kysely($yhteys, "SELECT id FROM keskustelualueryhmat WHERE id='".$mryhma."'");
+    if(!$tulos = mysql_fetch_array($kysely)){
+        $error = "Ryhmää ei löytyny.";
+        return false;
+    }
     //Tarkistetaan ettei yritetty siirtää joukkueen keskustelualuetta
     if (tarkistaOnkoJoukkueenKeskustelualue($yhteys, $keskustelualue)) {
         $error = "Et voi siirtää joukkueiden keskustelualueita.";
@@ -186,45 +151,47 @@ function siirraKeskustelualue($yhteys) {
     }
     //Siirretään
     kysely($yhteys, "UPDATE keskustelualueet SET keskustelualueryhmatID='" . $mryhma . "' WHERE keskustelualueryhmatID='" . $keskustelualueryhmatid . "' AND id='" . $keskustelualue . "'");
-    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=".$keskustelualueryhmatid);
+    ohjaaOhajuspaneeliin($okeskustelualue, "&mode=muokkaa&keskustelualueryhmatid=" . $keskustelualueryhmatid);
 }
 
-function poistaViesti($yhteys) {
-    tarkistaKirjautuneenTunnus($yhteys);
-    $viesti = mysql_real_escape_string(trim($_GET['viesti']));
-    $sivu = mysql_real_escape_string(trim($_GET['sivu']));
-    if (empty($sivu))
-        $sivu = 1;
-    $kysely = kysely($yhteys, "SELECT k.id kid, keskustelualueetID FROM Viestit v, Keskustelut k, Keskustelualueet_keskustelut kk WHERE v.keskustelutID=k.id AND k.id=kk.keskustelutID AND v.id='" . $viesti . "'");
-    //Tarkistetaan viestin olemassa olo
-    if ($tulos = mysql_fetch_array($kysely)) {
-        //Tarkistetaan oikeudet poistaa viesti
-        tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $tulos['keskustelualueetID']);
-        kysely($yhteys, "DELETE FROM Viestit WHERE id='" . $viesti . "'");
-        siirry("keskustelu.php?keskustelu=" . $tulos['kid'] . "&sivu=" . $sivu);
+function siirraKeskustelualuettaRyhmassa($yhteys){
+    global $siirry, $error, $okeskustelualue;
+    $keskustelualueryhma = mysql_real_escape_string($_POST['keskustelualueryhma']);
+    $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
+    $suunta = $_POST['suunta'];
+    if(tarkistaAdminOikeudet($yhteys, "Admin")){
+        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia muokata keskustelualueiden järjestystä.";
+        if($siirry){
+            siirry("eioikeuksia.php");
+            return false;
+        }
+        $error = $_SESSION['eioikeuksia'];
+        return false;
     }
-    siirry("index.php");
-}
-
-function poistaKeskustelu($yhteys) {
-    tarkistaKirjautuneenTunnus($yhteys);
-    $keskustelu = mysql_real_escape_string(trim($_GET['keskustelu']));
-    $sivu = $_GET['sivu'];
-    if (empty($sivu))
-        $sivu = 1;
-    $kysely = kysely($yhteys, "SELECT keskustelualueetID FROM Keskustelualueet_keskustelut WHERE keskustelutID='" . $keskustelu . "'");
-    if ($tulos = mysql_fetch_array($kysely)) {
-        tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $tulos['keskustelualueetID']);
-        //Poistetaan kaikki keskusteluun liittyvät asiat
-        kysely($yhteys, "DELETE FROM Viestit WHERE keskustelutID='" . $keskustelu . "'");
-        kysely($yhteys, "DELETE FROM Paikallaolo WHERE tapahtumatID IN (SELECT tapahtumatID FROM Keskustelut WHERE id='" . $keskustelu . "')");
-        kysely($yhteys, "DELETE FROM Tapahtumat WHERE id IN (SELECT tapahtumatID id FROM Keskustelut WHERE id='" . $keskustelu . "')");
-        kysely($yhteys, "DELETE FROM Keskustelualueet_keskustelut WHERE keskustelutID='" . $keskustelu . "'");
-        kysely($yhteys, "DELETE FROM Keskustelut WHERE id='" . $keskustelu . "'");
-        siirry("keskustelualue.php?keskustelualue=" . $tulos['keskustelualueetID'] . "&sivu=" . $sivu);
-    } else {
-        siirry("index.php");
+    $kysely = kysely($yhteys, "SELECT jarjestysnumero FROM keskustelualueet WHERE keskustelualueryhmatID='".$keskustelualueryhma."' ORDER BY jarjestysnumero DESC LIMIT 0,1");
+    if(!$tulos = mysql_fetch_array($kysely)){
+        $error = "Ryhmää ei löydy tai ryhmässä ei ole keskustelualueita.";
+        return false;
+    }
+    $suurin = $tulos['jarjestysnumero'];
+    $kysely = kysely($yhteys, "SELECT jarjestysnumero FROM keskustelualueet WHERE id='".$keskustelualue."' AND keskustelualueryhmatID='".$keskustelualueryhma."'");
+    if(!$tulos = mysql_fetch_array($kysely)){
+        $error = "Keskustelualuetta ei löydy.";
+        return false;
+    }
+    if(($suunta == "ylos" && $tulos['jarjestysnumero'] <= 1) || ($suunta == "alas" && $tulos['jarjestysnumero'] >= $suurin)){
+        $error = "Ei voida siirtää.";
+        return false;
+    }
+    if($suunta == "ylos"){
+        kysely($yhteys, "UPDATE keskustelualueet SET jarjestysnumero=jarjestysnumero+1 WHERE jarjestysnumero='".($tulos['jarjestysnumero']-1)."' AND keskustelualueryhmatID='".$keskustelualueryhma."'");
+        kysely($yhteys, "UPDATE keskustelualueet SET jarjestysnumero=jarjestysnumero-1 WHERE id='".$keskustelualue."' AND keskustelualueryhmatID='".$keskustelualueryhma."'");
+    } elseif($suunta == "alas"){
+        kysely($yhteys, "UPDATE keskustelualueet SET jarjestysnumero=jarjestysnumero-1 WHERE jarjestysnumero='".($tulos['jarjestysnumero']+1)."' AND keskustelualueryhmatID='".$keskustelualueryhma."'");
+        kysely($yhteys, "UPDATE keskustelualueet SET jarjestysnumero=jarjestysnumero+1 WHERE id='".$keskustelualue."' AND keskustelualueryhmatID='".$keskustelualueryhma."'");
+    }
+    if($siirry){
+        ohjaaOhajuspaneeliin($okeskustelualue, "&mode=siirra&keskustelualueryhmatid=" . $keskustelualueryhmatid);
     }
 }
-
 ?>

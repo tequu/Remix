@@ -89,3 +89,29 @@
 #tunnus div:last-child{
     margin: 0;
 }
+
+/** Foorumi valikko **/
+#foorumivalikko {
+    height: 33px;
+    width: 950px;
+    margin-left: 20px;
+    position:relative;
+    color:#ffffff;
+    z-index: 10;
+}
+#foorumivalikko div {
+    width: 118px;
+    height: 31px;
+    float: left;
+    margin-right: 10px;
+}
+#foorumivalikko .nappi{
+    cursor: pointer;
+}
+#foorumivalikko #tunnus {
+    float: right;
+    margin-right:27px;
+    height:31px;
+    width:246px;
+    text-align: center;
+}

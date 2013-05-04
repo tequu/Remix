@@ -1,33 +1,5 @@
 <?php
 
-//Lisää näkyvyys oikeudet käyttäjälle
-function lisaaNakyvyysOikeudet($yhteys) {
-    global $error, $okayttajat;
-    if (!tarkistaAdminOikeudet($yhteys, "Admin")) {
-        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia lisätä oikeuksia käyttäjille.";
-        siirry("eioikeuksia.php");
-    }
-    $kayttajatid = mysql_real_escape_string(trim($_GET['kayttajatid']));
-    $keskustelualueet = $_POST['lisattavatoikeudet'];
-    //Tarkistetaan tunnuksen olemassaolo
-    if (!tarkistaTunnuksenOlemassaOlo($yhteys, $kayttajatid)) {
-        $_SESSION['virhe'] = "Käyttäjää ei löytynyt.";
-        siirry("virhe.php");
-    }
-    //Jos saatiin oikeuksia mitä halutaan antaa
-    if (!empty($keskustelualueet)) {
-        //Luodaan kaikista yksi sql-lause
-        $sql = "INSERT INTO keskustelualueoikeudet (keskustelualueetID, tunnuksetID) VALUES ";
-        foreach ($keskustelualueet as $keskustelualue) {
-            $keskustelualue = mysql_real_escape_string($keskustelualue);
-            $sql .= "('" . $keskustelualue . "', '" . $kayttajatid . "'), ";
-        }
-        $sql = substr($sql, 0, -2);
-        kysely($yhteys, $sql);
-    }
-    ohjaaOhajuspaneeliin($okayttajat, "&mode=muokkaa&kayttajatid=" . $kayttajatid);
-}
-
 //Lisää hallinta oikeudet käyttäjälle
 function lisaaHallintaOikeudet($yhteys) {
     global $error, $okayttajat;

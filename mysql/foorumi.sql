@@ -1,14 +1,11 @@
-CREATE TABLE IF NOT EXISTS keskustelualueryhmat(
-    id INT UNIQUE AUTO_INCREMENT,
-    otsikko VARCHAR(50) NOT NULL,
-    PRIMARY KEY(id)
-);
 CREATE TABLE IF NOT EXISTS keskustelualueet(
     id INT UNIQUE AUTO_INCREMENT,
     nimi VARCHAR(50) NOT NULL,
     kuvaus VARCHAR(50) NOT NULL,
     keskustelualueryhmatID INT NOT NULL,
     julkinen INT,
+	lukittu INT NOT NULL,
+	jarjestysnumero INT,
     PRIMARY KEY(id),
     FOREIGN KEY(keskustelualueryhmatID) REFERENCES keskustelualueryhmat
 );
@@ -18,11 +15,18 @@ CREATE TABLE IF NOT EXISTS keskustelualuekeskustelut(
     FOREIGN KEY(keskustelualueetID) REFERENCES keskustelualueet,
     FOREIGN KEY(keskustelutID) REFERENCES keskustelut
 );
+CREATE TABLE IF NOT EXISTS keskustelualueryhmat(
+    id INT UNIQUE AUTO_INCREMENT,
+    otsikko VARCHAR(50) NOT NULL,
+	jarjestysnumero INT NOT NULL,
+    PRIMARY KEY(id)
+);
 CREATE TABLE IF NOT EXISTS keskustelut(
     id INT UNIQUE AUTO_INCREMENT,
     otsikko VARCHAR(50) NOT NULL,
     aloitusaika TIMESTAMP NOT NULL,
     aloittaja INT NOT NULL,
+	katsottu INT NOT NULL,
     nakyypelaajille INT NOT NULL,
     tapahtumatID INT,
     PRIMARY KEY(id),
@@ -48,20 +52,22 @@ CREATE TABLE IF NOT EXISTS keskustelualueoikeudet(
 );
 CREATE TABLE IF NOT EXISTS tapahtumat(
     id INT UNIQUE AUTO_INCREMENT,
-    nimi VARCHAR(200) NOT NULL,
     tapahtuma VARCHAR(20) NOT NULL,
     alkamisaika TIMESTAMP NOT NULL,
     loppumisaika TIMESTAMP,
-    kuvaus TEXT,
+    kuvaus VARCHAR(120),
     ilmotakaraja TIMESTAMP,
     ilmomaxmaara INT,
     lisatieto TEXT,
     paikka VARCHAR(50),
+	inmaara INT NOT NULL,
+	outmaara INT NOT NULL,
     PRIMARY KEY(id)
 );
 CREATE TABLE IF NOT EXISTS paikallaolo(
     lasna INT NOT NULL,
-    viesti TEXT,
+    kommentti TEXT,
+	ilmoittautumisaika TIMESTAMP NOT NULL,
     tunnuksetID INT NOT NULL,
     tapahtumatID INT NOT NULL,
     FOREIGN KEY(tunnuksetID) REFERENCES tunnukset,

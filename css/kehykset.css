@@ -6,7 +6,7 @@ body, html {
     width:100%;
     z-index:1;
     position:relative;
-    background-color:#e86d1c;
+    background-color: #e86d1c;
     font-family: Tahoma,Helvetica,sans-serif;
     font-size: 15px;
 }
@@ -52,12 +52,12 @@ body, html {
     height:35px;
     background-repeat: no-repeat;
 }
-.ala_otsikko{
+/*.ala_otsikko{
     margin:0 auto 10px;
     text-decoration:underline;
     font-size:20px;
     font-weight:bold;
-}
+}*/
 #keskelle{
     text-align:center;
     margin:0 auto;
@@ -193,4 +193,7 @@ body, html {
     height:171px;
     margin-top: 15px;
     background-image:URL("/Remix/kuvat/tyttosaba.jpg");
+}
+.hidden {
+    display: none;
 }

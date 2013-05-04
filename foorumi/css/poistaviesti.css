@@ -1,0 +1,45 @@
+#foorumi #poistaviesti {
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+#foorumi #poistaviesti #otsikko {
+    color: #ffffff;
+    background-color: #313131;
+    border-radius: 5px 5px 0px 0px;
+    height: 30px;
+    font-size: 18px;
+    margin: 0px;
+    padding: 5px 0px 0px 20px;
+    width: auto;
+}
+#foorumi #poistaviesti #laatikko {
+    padding: 10px 0px 0px 20px;
+    overflow: hidden;
+}
+#foorumi #poistaviesti #teksti {
+    margin-bottom: 50px;
+}
+#foorumi #poistaviesti #viestinotsikko div, #foorumi #poistaviesti #teksti div{
+    width: 70px;
+    float: left;
+}
+#foorumi #poistaviesti #napit {
+    margin: 10px 0px 0px 0px;
+}
+#foorumi #poistaviesti .poista {
+    margin: 0;
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/poista.png);
+    cursor: pointer;
+    float: left;
+}
+#foorumi #poistaviesti .takaisin {
+    margin: 0;
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/takaisin.png);
+    cursor: pointer;
+    float: left;
+}

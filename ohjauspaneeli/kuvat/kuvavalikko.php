@@ -1,6 +1,11 @@
 <?php
+if($joukkue != 0){
 $kysely = kysely($yhteys, "SELECT k.id id, kuva FROM kuvat k, kuvakategoriat kk, joukkueet j ".
         "WHERE kuvakategoriatID=kk.id AND j.id=joukkueetID AND j.id='" . $joukkue . "' AND kk.id='".$kuvakategoriatid."' AND kausi='".$kausi."'");
+} else {
+    $kysely = kysely($ytheys, "SELECT k.id id, kuva FROM kuvat k, kuvakategoriat kk ".
+            "WHERE kuvakategoriatID=kk.id AND kk.joukkueetID='0' AND kk.id='".$kuvakategoriatid."'");
+}
 if ($tulos = mysql_fetch_array($kysely)) {
     ?>
     <hr />
@@ -9,7 +14,7 @@ if ($tulos = mysql_fetch_array($kysely)) {
         <input type="hidden" name="joukkue" value="<?php echo $joukkue; ?>" />
         <input type="hidden" name="mode" value="muokkaakuvaa" />
         <input type="hidden" name="kuvakategoriatid" value="<?php echo $kuvakategoriatid; ?>" />
-        Valitse kuvakategoria:<select name="kuvatid" onchange="laheta('muokkaakuvaa',[],[])">
+        Valitse kuva:<select name="kuvatid" onchange="laheta('muokkaakuvaa',[],[])">
             <?php
             echo!isset($_GET['kuvatid']) ? "<option></option>" : "";
             do {

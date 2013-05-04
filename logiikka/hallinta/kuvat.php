@@ -21,34 +21,34 @@ function lisaaKuvaKategoria($yhteys) {
 }
 
 function muokkaaKuvaKategoriaa($yhteys) {
-    global $error, $kausi, $okuvat;
+    global $error, $okuvat;
     $joukkue = mysql_real_escape_string($_GET['joukkue']);
-    $kuvakategoriatid = mysql_real_escape_string($_GET['kuvakategoriatid']);
+    $kuvakategoria = mysql_real_escape_string($_GET['kuvakategoriatid']);
     tarkistaOikeudetJaOlemassaOloKuvaKategorialle($yhteys, $joukkue, $kuvakategoria);
     $nimi = mysql_real_escape_string(trim($_POST['nimi']));
     if (empty($nimi)) {
         $error = "*Nimi kenttä oli tyhjä";
         return false;
     }
-    kysely($yhteys, "UPDATE kuvakategoriat SET nimi='" . $nimi . "' WHERE id='" . $kuvakategoriatid . "'");
-    ohjaaOhajuspaneeliin($okuvat, "&joukkue=" . $joukkue . "&mode=muokkaa&kuvakategoriatid=" . $kuvakategoriatid);
+    kysely($yhteys, "UPDATE kuvakategoriat SET nimi='" . $nimi . "' WHERE id='" . $kuvakategoria . "'");
+    ohjaaOhajuspaneeliin($okuvat, "&joukkue=" . $joukkue . "&mode=muokkaa&kuvakategoriatid=" . $kuvakategoria);
 }
 
 function poistaKuvaKategoria($yhteys) {
-    global $okuvat, $kausi;
+    global $okuvat;
     $joukkue = mysql_real_escape_string($_GET['joukkue']);
-    $kuvakategoriatid = mysql_real_escape_string($_GET['kuvakategoriatid']);
+    $kuvakategoria = mysql_real_escape_string($_GET['kuvakategoriatid']);
     tarkistaOikeudetJaOlemassaOloKuvaKategorialle($yhteys, $joukkue, $kuvakategoria);
 
-    $kysely = kysely($yhteys, "SELECT kuva FROM kuvat WHERE kuvakategoriatID='" . $kuvakategoriatid . "'");
+    $kysely = kysely($yhteys, "SELECT kuva FROM kuvat WHERE kuvakategoriatID='" . $kuvakategoria . "'");
     while ($tulos = mysql_fetch_array($kysely)) {
-        if (!unlink("/home/fbcremix/public_html/Remix/kuvat/kuvakategoriat/" . $kuvakategoriatid . "/" . $tulos['kuva'])) {
+        if (!unlink("/home/fbcremix/public_html/Remix/kuvat/kuvakategoriat/" . $kuvakategoria . "/" . $tulos['kuva'])) {
             $error = "Joitakin kuvia ei onnistuttu poistamaan.";
             return false;
         }
     }
-    $kysely = kysely($yhteys, "DELETE FROM kuvat WHERE kuvakategoriatID='" . $kuvakategoriatid . "'");
-    $kysely = kysely($yhteys, "DELETE FROM kuvakategoriat WHERE id='" . $kuvakategoriatid . "'");
+    $kysely = kysely($yhteys, "DELETE FROM kuvat WHERE kuvakategoriatID='" . $kuvakategoria . "'");
+    $kysely = kysely($yhteys, "DELETE FROM kuvakategoriat WHERE id='" . $kuvakategoria . "'");
     ohjaaOhajuspaneeliin($okuvat, "&joukkue=" . $joukkue);
 }
 
@@ -64,7 +64,7 @@ function lisaaKuvaKuvakategoriaan($yhteys) {
         return false;
     }
     $kuvateksti = mysql_real_escape_string(trim($_POST['kuvateksti']));
-    if (siirraKuva($kuvanosoite, 600, 450, 0, 0, "", 0, 0)) {
+    if (siirraKuva($kuvanosoite, 600, 450, 100, 100, "", 0, 0)) {
         kysely($yhteys, "INSERT INTO kuvat (kuva, kuvateksti, kuvakategoriatID) VALUES('" . $kuvannimi . "', '" . $kuvateksti . "', '" . $kuvakategoriatid . "')");
         ohjaaOhajuspaneeliin($okuvat, "&joukkue=" . $joukkue . "&mode=muokkaa&kuvakategoriatid=" . $kuvakategoriatid);
     }
@@ -74,14 +74,19 @@ function lisaaKuvaKuvakategoriaan($yhteys) {
 function muokkaaKuvaKategorianKuvaa($yhteys) {
     global $okuvat, $kausi;
     $joukkue = mysql_real_escape_string($_GET['joukkue']);
-    if (!(($joukkue != 0 && tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue)) || ($joukkue == 0 && tarkistaAdminOikeudet($yhteys, "Admin"))) || !tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue)) {
+    if (!(($joukkue != 0 && tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue)) || ($joukkue == 0 && tarkistaAdminOikeudet($yhteys, "Admin"))) || !($joukkue == 0 || tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue))) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ollut oikeuksia muokata joukkueen " . haeJoukkueenNimi($yhteys, $joukkue) . " kuvakategoriaa.";
         siirry("eioikeuksia.php");
     }
     $kuvakategoriatid = mysql_real_escape_string($_GET['kuvakategoriatid']);
     $kuvatid = mysql_real_escape_string($_GET['kuvatid']);
-    $kysely = kysely($yhteys, "SELECT joukkueetID FROM kuvat k, kuvakategoriat kk, joukkueet j " .
-            "WHERE kuvakategoriatID=kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND j.id='" . $joukkue . "' AND kk.id='" . $kuvakategoriatid . "' AND kausi='" . $kausi . "'");
+    if ($joukkue != 0) {
+        $kysely = kysely($yhteys, "SELECT joukkueetID FROM kuvat k, kuvakategoriat kk, joukkueet j " .
+                "WHERE kuvakategoriatID=kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND j.id='" . $joukkue . "' AND kk.id='" . $kuvakategoriatid . "' AND kausi='" . $kausi . "'");
+    } else {
+        $kysely = kysely($yhteys, "SELECT joukkueetID FROM kuvat k, kuvakategoriat kk " .
+                "WHERE kuvakategoriatid=.kk.id AND k.id='" . $kuvatid . "' AND kk.id='" . $kuvakategoriatid . "' AND kk.joukkueetID='0'");
+    }
     if (!$tulos = mysql_fetch_array($kysely)) {
         $_SESSION['virhe'] = "Kuvakategoriaa ei löydy.";
         siirry("virhe.php");
@@ -94,14 +99,19 @@ function muokkaaKuvaKategorianKuvaa($yhteys) {
 function poistaKuvaKategorianKuva($yhteys) {
     global $okuvat, $error, $kausi;
     $joukkue = mysql_real_escape_string($_GET['joukkue']);
-    if (!(($joukkue != 0 && tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue)) || ($joukkue == 0 && tarkistaAdminOikeudet($yhteys, "Admin"))) || !tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue)) {
+    if (!(($joukkue != 0 && tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue)) || ($joukkue == 0 && tarkistaAdminOikeudet($yhteys, "Admin"))) || !($joukkue == 0 || tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue))) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ollut oikeuksia muokata joukkueen " . haeJoukkueenNimi($yhteys, $joukkue) . " kuvakategoriaa.";
         siirry("eioikeuksia.php");
     }
     $kuvakategoriatid = mysql_real_escape_string($_GET['kuvakategoriatid']);
     $kuvatid = mysql_real_escape_string($_GET['kuvatid']);
-    $kysely = kysely($yhteys, "SELECT kuva FROM kuvat k, kuvakategoriat kk, joukkueet j " .
-            "WHERE kuvakategoriatID=kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND j.id='" . $joukkue . "' AND kk.id='" . $kuvakategoriatid . "' AND kausi='" . $kausi . "'");
+    if ($joukkue != 0) {
+        $kysely = kysely($yhteys, "SELECT kuva FROM kuvat k, kuvakategoriat kk, joukkueet j " .
+                "WHERE kuvakategoriatID=kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND j.id='" . $joukkue . "' AND kk.id='" . $kuvakategoriatid . "' AND kausi='" . $kausi . "'");
+    } else {
+        $kysely = kysely($yhteys, "SELECT kuva FROM kuvat k, kuvakategoriat kk " .
+                "WHERE kuvakategoriatid=.kk.id AND k.id='" . $kuvatid . "' AND kk.id='" . $kuvakategoriatid . "' AND kk.joukkueetID='0'");
+    }
     if (!$tulos = mysql_fetch_array($kysely)) {
         $_SESSION['virhe'] = "Kuvakategoriaa ei löydy.";
         siirry("virhe.php");

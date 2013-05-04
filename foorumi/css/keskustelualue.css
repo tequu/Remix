@@ -16,38 +16,58 @@
     padding: 0;
     border-radius: 0px;
 }
-#foorumi #otsikko .uusitapahtuma-nappi {
+#foorumi #keskustelualue #otsikko .uusitapahtuma-nappi {
     background-image: URL(/Remix/kuvat/valikko/uusitapahtuma.png);
 }
-#foorumi #keskustelut .viiva {
-    width: 860px;
-    height: 5px;
-    background-color: #ff8331;
+#foorumi #keskustelualue #sivunumerot {
+    float: right;
+    margin-right: 5px;
 }
-#foorumi #keskustelut .keskustelu{
+#foorumi #keskustelualue #keskustelut .keskustelu{
     width: 860px;
     height: 50px;
+    margin: 0px 0px 15px 0px;
+    background-color: #ff8331;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #888888;
 }
-#foorumi #keskustelut .keskustelu .vasen{
+#foorumi #keskustelualue #keskustelut .keskustelu .vasen{
     width: 430px;
     margin: 0px 0px 0px 40px;
     padding-top: 2px;
     float: left;
 }
-#foorumi #keskustelut .keskustelu .nimi{
+#foorumi #keskustelualue #keskustelut .keskustelu .nimi{
     font-size: 20px;
     color: #ff8331;
+    float: left;
 }
-#foorumi #keskustelut .keskustelu .nimi a{
+#foorumi #keskustelualue #keskustelut .keskustelu .nimi a{
     text-decoration: none;
     color: #000000;
 }
-#foorumi #keskustelut .keskustelu .keski{
+#foorumi #keskustelualue #keskustelut .napit {
+    margin-left: 10px;
+    float: right;
+}
+#foorumi #keskustelualue #keskustelut .poista, 
+#foorumi #keskustelualue #keskustelut .muokkaa {
+    background-image: URL(/Remix/kuvat/valikko/muokkaa_pikku.png);
+    float: left;
+    width: 29px;
+    height: 25px;
+    margin: 3px 5px 0px 0px;
+    cursor: pointer;
+}
+#foorumi #keskustelualue #keskustelut .poista {
+    background-image: URL(/Remix/kuvat/valikko/poista_pikku.png);
+}
+#foorumi #keskustelualue #keskustelut .keskustelu .keski{
     width: 185px;
     padding-top: 2px;
     float: left;
 }
-#foorumi #keskustelut .keskustelu .oikea{
+#foorumi #keskustelualue #keskustelut .keskustelu .oikea{
     width: 185px;
     float: left;
     padding-top: 7px;

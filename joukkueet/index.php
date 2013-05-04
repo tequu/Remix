@@ -31,6 +31,14 @@ include("/home/fbcremix/public_html/Remix/joukkueet/ohjelmat/valikko.php");
     </div>
     <div id="etusivu_kuvat">
         <div class="otsikko" style="background-image:URL('/Remix/kuvat/uusimmat-kuvat.png')"></div>
+        <?php
+        $kysely = kysely($yhteys, "SELECT kuva, kuvakategoriatID FROM kuvat k, kuvakategoriat kk WHERE kuvakategoriatID=kk.id AND joukkueetID='".$joukkueid."' ORDER BY lahetysaika DESC LIMIT 0,4");
+        while ($tulos = mysql_fetch_array($kysely)) {
+            ?>
+            <a href="/Remix/joukkueet/kuvat.php?id=<?php echo $id; ?>"><div class="kuva" style="background-image: URL('/Remix/kuvat/kuvakategoriat/<?php echo $tulos['kuvakategoriatID'] . "/" . $tulos['kuva']; ?>')"></div></a>
+            <?php
+        }
+        ?>
     </div>
 </div>
 <?php

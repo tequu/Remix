@@ -59,11 +59,14 @@
     background-image: URL(/Remix/kuvat/valikko/lisaa.png);
     float: left;
     cursor: pointer;
+    margin: 0;
 }
-#foorumi #uusitapahtuma .tyhjenna {
+#foorumi #uusitapahtuma .takaisin {
     width: 111px;
     height: 31px;
-    background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);
+    background-image: URL(/Remix/kuvat/valikko/takaisin.png);
     float: left;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
 }

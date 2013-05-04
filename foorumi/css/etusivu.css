@@ -26,7 +26,7 @@
 #foorumi .keskustelualueet {
     margin-bottom: 30px;
 }
-#foorumi .otsikko{
+#foorumi #etusivu .keskustelualueet .otsikko{
     width: 840px;
     height: 40px;
     background-color: #313131;
@@ -35,14 +35,16 @@
     border-radius: 10px;
     padding-left: 20px;
     padding-top: 5px;
+    box-shadow: 3px 3px 5px #888888;
 }
 #foorumi .keskustelualue{
     width: 840px;
     height: 50px;
-    background-color: #d3d3d3;
+    background-color: #ff8331;
     color: #000000;
     border-radius: 10px;
     margin: 10px;
+    box-shadow: 3px 3px 5px #888888;
 }
 #foorumi .keskustelualue .vasen, #foorumi .keskustelualue .keski, #foorumi .keskustelualue .oikea {
     float: left;
@@ -52,6 +54,9 @@
 #foorumi .keskustelualue .vasen {
     width: 430px;
     margin-left: 40px;
+}
+#foorumi .keskustelualue .keski {
+    padding-top: 2px;
 }
 #foorumi .keskustelualue .vasen .nimi {
     width: 430px;

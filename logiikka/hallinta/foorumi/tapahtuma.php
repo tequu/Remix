@@ -1,13 +1,14 @@
 <?php
 
 function uusiTapahtuma($yhteys) {
-//    tarkistaKirjautuneenTunnus($yhteys);
+    
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     if (tarkistaKeskustelualueetOlemassaOlo($yhteys, $keskustelualue)) {
-//        tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue);
+        if (!tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue)) {
+            return false;
+        }
         global $error;
-//        $kayttaja = $_SESSION['id'];
-        $kayttaja = 1;
+        $kayttaja = $_SESSION['id'];
         $nimi = mysql_real_escape_string(trim($_POST['nimi']));
         $tapahtuma = mysql_real_escape_string($_POST['tapahtuma']);
         $milloina = array(mysql_real_escape_string($_POST['paiva_a']), mysql_real_escape_string($_POST['kuukausi_a']), mysql_real_escape_string($_POST['vuosi_a']), mysql_real_escape_string($_POST['tunti_a']), mysql_real_escape_string($_POST['minuutti_a']));
@@ -48,8 +49,8 @@ function uusiTapahtuma($yhteys) {
             return;
         }
         //Asetetaan saadut tiedto tietokantaan
-        $sqlalku = "INSERT tapahtumat (nimi, tapahtuma, alkamisaika";
-        $sqlloppu = "VALUES ('" . $nimi . "', '" . $tapahtuma . "', '" . paivamaaraTietokantaMuotoon($milloina) . "'";
+        $sqlalku = "INSERT tapahtumat (tapahtuma, alkamisaika";
+        $sqlloppu = "VALUES ('" . $tapahtuma . "', '" . paivamaaraTietokantaMuotoon($milloina) . "'";
         if ($loppuu) {
             $sqlalku .= ", loppumisaika";
             $sqlloppu .= ", '" . paivamaaraTietokantaMuotoon($milloinl) . "'";
@@ -86,15 +87,15 @@ function uusiTapahtuma($yhteys) {
 }
 
 function muokkaaTapahtumaa($yhteys) {
-    //    tarkistaKirjautuneenTunnus($yhteys);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     $keskustelu = mysql_real_escape_string($_POST['keskustelu']);
     if (tarkistaKeskustelualueetOlemassaOlo($yhteys, $keskustelualue)) {
-//        tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue);
+        if (!tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue)) {
+            $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksa muokata keskustelualuetta.";
+            siirry("eioikeuksia.php");
+        }
         global $error;
         $defaultaika = "0000-0-0 00:00:00";
-//        $kayttaja = $_SESSION['id'];
-        $kayttaja = 1;
         $nimi = mysql_real_escape_string(trim($_POST['nimi']));
         $tapahtuma = mysql_real_escape_string($_POST['tapahtuma']);
         $milloina = array(mysql_real_escape_string($_POST['paiva_a']), mysql_real_escape_string($_POST['kuukausi_a']), mysql_real_escape_string($_POST['vuosi_a']), mysql_real_escape_string($_POST['tunti_a']), mysql_real_escape_string($_POST['minuutti_a']));
@@ -135,19 +136,48 @@ function muokkaaTapahtumaa($yhteys) {
             return;
         }
         //Asetetaan saadut tiedto tietokantaan
-        $sql = "UPDATE tapahtumat SET nimi='" . $nimi . "', tapahtuma='" . $tapahtuma . "', alkamisaika='" . paivamaaraTietokantaMuotoon($milloina) . "', kuvaus='" . $kuvaus . "', " .
+        $sql = "UPDATE tapahtumat SET tapahtuma='" . $tapahtuma . "', alkamisaika='" . paivamaaraTietokantaMuotoon($milloina) . "', kuvaus='" . $kuvaus . "', " .
                 "lisatieto='" . $lisatieto . "', paikka='" . $paikka . "', " .
                 "loppumisaika='" . ($loppuu ? paivamaaraTietokantaMuotoon($milloinl) : $defaultaika) . "', " .
                 "ilmotakaraja='" . ($takailmoo ? paivamaaraTietokantaMuotoon($takailmo) : $defaultaika) . "', " .
-                "ilmomaxmaara='" . ($maxilmoo ? $maxilmo : null) . "' ".
-                "WHERE id=(SELECT tapahtumatID FROM keskustelut k, keskustelualuekeskustelut kk WHERE k.id=kk.keskustelutID AND kk.keskustelualueetID='".$keskustelualue."' AND ".
-                "k.id='".$keskustelu."')";
+                "ilmomaxmaara='" . ($maxilmoo ? $maxilmo : null) . "' " .
+                "WHERE id=(SELECT tapahtumatID FROM keskustelut k, keskustelualuekeskustelut kk WHERE k.id=kk.keskustelutID AND kk.keskustelualueetID='" . $keskustelualue . "' AND " .
+                "k.id='" . $keskustelu . "')";
         kysely($yhteys, $sql);
+        kysely($yhteys, "UPDATE keskustelut SET otsikko='".$nimi."' WHERE id='".$keskustelu."'");
         //Luodaan uusi keskustelu, johon tapahtuma liitetään
         siirry("foorumi/keskustelu.php?keskustelualue=" . $keskustelualue . "&keskustelu=" . $keskustelu);
     } else {
-        siirry("foorumi/index.php");
+        $_SESSION['error'] = "Keskustelualuetta ei löytynyt.";
+        siirry("virhe.php");
     }
+}
+
+function poistaTapahtuma($yhteys) {
+    global $error;
+    $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
+    $keskustelu = mysql_real_escape_string($_POST['keskustelu']);
+    $kysely = kysely($yhteys, "SELECT tapahtumatID FROM keskustelut, keskustelualuekeskustelut WHERE id=keskustelutID AND id='" . $keskustelu . "' AND keskustelualueetID='" . $keskustelualue . "'");
+    $tulos = mysql_fetch_array($kysely);
+    if (!$tulos['tapahtumatID']) {
+        $_SESSION['error'] = "Tapahtumaa ei löytynyt.";
+        siirry("virhe.php");
+    }
+    if (!tarkistaHallintaOikeudetKeskustelualueelle($yhteys, $keskustelualue)) {
+        $_SESSION['eioikeuksia'] = "Sinulla ei ole hallinta oikeuksia keskustelualueelle.";
+        siirry("eioikeuksia.php");
+    }
+    $kysely = kysely($yhteys, "SELECT count(keskustelualueetID) maara FROM keskustelualuekeskustelut WHERE keskustelutID='" . $keskustelu . "'");
+    $tulos = mysql_fetch_array($kysely);
+    if ($tulos['maara'] == 1) {
+        kysely($yhteys, "DELETE FROM viestit WHERE keskustelutID='" . $keskustelu . "'");
+        kysely($yhteys, "DELETE FROM paikallaolo WHERE tapahtumatID IN (SELECT tapahtumatID FROM keskustelut WHERE id='" . $keskustelu . "')");
+        kysely($yhteys, "DELETE FROM tapahtumat WHERE id IN (SELECT tapahtumatID id FROM keskustelut WHERE id='" . $keskustelu . "')");
+        kysely($yhteys, "DELETE FROM keskustelut WHERE id='" . $keskustelu . "'");
+    }
+    kysely($yhteys, "DELETE FROM keskustelualuekeskustelut WHERE keskustelualueetID='" . $keskustelualue . "' AND keskustelutID='" . $keskustelu . "'");
+
+    siirry("foorumi/tapahtumat.php");
 }
 
 ?>

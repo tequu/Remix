@@ -1,5 +1,5 @@
 "use strict";
-(function(Sivunumerot) {
+(function(Sivunumerot, joukkueid) {
     var kuvagalleria = {
         model: {},
         view: {}
@@ -13,7 +13,7 @@
         kuvatUrl: "/Remix/kuvat/kuvakategoriat/",
         loaderUrl: "/Remix/kuvat/loader.gif",
         riveja: 2,
-        rivilla: 1
+        rivilla: 4
     }
     kuvagalleria.model.image = Backbone.Model.extend({
         initialize: function(image){
@@ -76,7 +76,7 @@
             this.model.get("kategoriat").reset();
             var _this = this;
             $.ajax({
-                url: kuvagalleria.asetukset.url,
+                url: kuvagalleria.asetukset.url+"?joukkueid="+joukkueid,
                 dataType: 'json',
                 success: function(data){
                     _this.tallennaKategoriat(data);
@@ -138,7 +138,8 @@
             });
         },
         naytaKategoria: function(e){
-            var naytettavaKategoria = this.model.get("kategoriat").get($(e.target).data("id"));   
+            var naytettavaKategoria = this.model.get("kategoriat").get($(e.target).data("id")); 
+            $("#sivunumerot").html("");
             new kuvagalleria.view.KategoriaView({
                 model: naytettavaKategoria
             });
@@ -168,6 +169,7 @@
     kuvagalleria.view.KategoriaView = Backbone.View.extend({
         el: $(".kuvagalleria"),
         initialize: function(){
+            var _this = this;
             this.$el.unbind("click");
             $(".kuvagalleria #takaisin").show();
             var sivuja = this.model.get("kuvia")/(kuvagalleria.asetukset.riveja*kuvagalleria.asetukset.rivilla);
@@ -184,16 +186,19 @@
             var _this = this;
             var montako = kuvagalleria.asetukset.riveja*kuvagalleria.asetukset.rivilla;
             var alkaen = this.model.get("sivunumerot").getNykyinenSivu()*montako;
+            if(this.model.get("kuvia")-alkaen < montako){
+                montako = this.model.get("kuvia")-alkaen;
+            }
             lataaKuvatJson(this.model.get("id"), alkaen, montako, function(data) {
                 tallennaKuvat(_this.model.get("kuvat"), data);
-                _this.naytaKategoria();
+                _this.naytaKategoria(montako);
                 _this.naytaKuvat();
             });
         },
-        naytaKategoria: function(){
+        naytaKategoria: function(montako){
             var data = new Array();
             data.push(this.model.toJSON());
-            naytaKategoriat(data, kuvagalleria.asetukset.riveja*kuvagalleria.asetukset.rivilla);
+            naytaKategoriat(data, montako);
         },
         naytaKuvat: function() {
             var _this = this;
@@ -340,7 +345,7 @@
 
     function lataaKuvatJson(kategoriaid, alkaen, montako, callback){
         $.ajax({
-            url: kuvagalleria.asetukset.url+"?kategoriatid="+kategoriaid+"&alkaen="+alkaen+"&maara="+montako,
+            url: kuvagalleria.asetukset.url+"?joukkueid="+joukkueid+"&kategoriatid="+kategoriaid+"&alkaen="+alkaen+"&maara="+montako,
             dataType: 'json',
             success: function(data){
                 callback(data);
@@ -442,5 +447,5 @@
     //            mode: "kategoriat"
     //        }, document.title, document.location.href);
     });
-})(sivunumerot);
+})(sivunumerot, joukkueid);
                     

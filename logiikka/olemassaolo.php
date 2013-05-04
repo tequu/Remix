@@ -1,5 +1,11 @@
 <?php
-
+function tarkistaKeskustelunOlemassaOlo($yhteys, $keskustelu, $keskustelualue){
+    $kysely = kysely($yhteys, "SELECT keskustelutID FROM keskustelualuekeskustelut WHERE keskustelualueetID='".$keskustelualue."' AND keskustelutID='".$keskustelu."' LIMIT 0,1");
+    if($tulos = mysql_fetch_array($kysely)){
+        return true;
+    }
+    return false;
+}
 //Tarkistetaan onko joukkueen keskustelualue
 function tarkistaOnkoJoukkueenKeskustelualue($yhteys, $id) {
     $id = mysql_real_escape_string($id);

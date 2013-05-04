@@ -2,8 +2,13 @@
 <div class="ala_otsikko">Poista kuva</div>
 <?php
 $kuvatid = mysql_real_escape_string(trim($_GET['kuvatid']));
-$kysely = kysely($yhteys, "SELECT kuva, kuvateksti FROM kuvat k, kuvakategoriat kk, joukkueet j " .
-        "WHERE kuvakategoriatid=.kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND kk.id='" . $kuvakategoriatid . "' AND j.id='" . $joukkue . "' AND kausi='" . $kausi . "'");
+if ($joukkue != 0) {
+    $kysely = kysely($yhteys, "SELECT kuva, kuvateksti FROM kuvat k, kuvakategoriat kk, joukkueet j " .
+            "WHERE kuvakategoriatid=.kk.id AND joukkueetID=j.id AND k.id='" . $kuvatid . "' AND kk.id='" . $kuvakategoriatid . "' AND j.id='" . $joukkue . "' AND kausi='" . $kausi . "'");
+} else {
+    $kysely = kysely($yhteys, "SELECT kuva, kuvateksti FROM kuvat k, kuvakategoriat kk " .
+            "WHERE kuvakategoriatid=.kk.id AND k.id='" . $kuvatid . "' AND kk.id='" . $kuvakategoriatid . "' AND kk.joukkueetID='0'");
+}
 if ($tulos = mysql_fetch_array($kysely)) {
     ?>
     <div>

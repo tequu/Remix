@@ -89,7 +89,6 @@ function muokkaaUutinen($yhteys) {
         return false;
     }
     if (!empty($_FILES['kuva']['name'])) {
-
         $kuvannimi = muutaTekstiHyvaksyttavaanMuotoon(basename($_FILES['kuva']['name']));
         $koko = getimagesize($_FILES['kuva']['tmp_name']);
         if ($kuvannimi == $tulos['kuva']) {
@@ -130,13 +129,13 @@ function muokkaaUutinen($yhteys) {
 
 function poistaUutisenKuva($yhteys, $siirry) {
     $uutisetid = mysql_real_escape_string($_GET['uutisetid']);
-    $kysely = kysely($yhteys, "SELECT UNIX_TIMESTAMP(kirjoitusaika) kirjoitusaika, otsikko, kuva, kirjoittaja FROM uutiset WHERE id='" . $uutisetid . "'");
+    $kysely = kysely($yhteys, "SELECT UNIX_TIMESTAMP(kirjoitusaika) kirjoitusaika, otsikko, kuva, tunnuksetID FROM uutiset WHERE id='" . $uutisetid . "'");
     if (!$tulos = mysql_fetch_array($kysely)) {
         $_SESSION['virhe'] = "Uutista ei löytynyt.";
         siirry("virhe.php");
     }
     $kirjoittaja = $_SESSION['id'];
-    if (!tarkistaAdminOikeudet($yhteys, "Masteradmin") && ($kirjoittaja == 0 || $kirjoittaja != $tulos['kirjoittaja'])) {
+    if (!tarkistaAdminOikeudet($yhteys, "Masteradmin") && ($kirjoittaja == 0 || $kirjoittaja != $tulos['tunnuksetID'])) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia muokata uutista.";
         siirry("eioikeuksia.php");
     }

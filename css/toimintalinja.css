@@ -1,0 +1,53 @@
+#toimintalinja{
+    margin-bottom:20px;
+    padding:20px;
+    width: 880px;
+    background-color:#d3d3d3;
+    font-size: 15px;
+}
+#toimintalinja #otsikko {
+    font-size: 30px;
+    margin: 0 auto;
+}
+#toimintalinja .viiva, #toimintalinja .viiva2 {
+    background-color: #e86d1c;
+    height: 2px;
+}
+#toimintalinja .viiva2 {
+    margin-top: 20px;
+}
+#toimintalinja .ala_otsikko {
+    color: #e86d1c;
+    font-size: 20px;
+    margin: 20px 0px 5px 0px;
+}
+#toimintalinja .ala_otsikko2 {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 17px;
+    margin-top: 10px;
+}
+#toimintalinja .ala_otsikko3 {
+    font-size: 17px;
+    color: #4169E1;
+    font-weight: bold;
+}
+#toimintalinja .toimintatavat {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #1E90FF;
+}
+#toimintalinja .arviointi {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #FF0000;
+}
+
+#toimintalinja .ryhma {
+    width: 100%;
+    overflow: hidden;
+    margin: 10px 0px 10px 0px;
+}
+#toimintalinja .ryhma .nimi {
+    font-style: italic;
+}

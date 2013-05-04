@@ -1,6 +1,6 @@
 <div class="otsikko">Keskustelualueiden hallinta</div>
 <?php
-if (tarkistaAdminOikeudet($yhteys, "Admin")) {
+if (tarkistaAdminOikeudet($yhteys, "MasterAdmin")) {
     include("/home/fbcremix/public_html/Remix/ohjauspaneeli/keskustelualue/valikko.php");
     if ($_GET['mode'] == "muokkaa") {
         $keskustelualueryhmatid = mysql_real_escape_string($_GET['keskustelualueryhmatid']);

@@ -46,11 +46,12 @@
                     <div id="osa"><a href="/Remix/kuvagalleria.php">Kuvagalleria</a></div>
                     <div id="osa"><a href="/Remix/toimintalinja.php">Toimintalinja</a></div>
                     <div id="osa"><a href="/Remix/latauspankki.php">Latauspankki</a></div>
+                    <div id="osa"><a href="/Remix/vieraskirja.php">Vieraskirja</a></div>
                 </div>
                 <div id="ala"></div>
             </div>
         </li>
-        <li style="background-image:URL('/Remix/kuvat/valikko/vieraskirja.png')"><a id="nappi" href="/Remix/vieraskirja.php"></a></li>
+        <li style="background-image:URL('/Remix/kuvat/valikko/foorumi.png')"><a id="nappi" href="/Remix/foorumi/index.php"></a></li>
     </ul>
     <div id="tunnus">
         <!--        <div style="background-image:URL('/Remix/kuvat/valikko/rekisteroidy.png')"><a href="/Remix/rekisteroi.php"></a></div>

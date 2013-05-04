@@ -8,11 +8,11 @@ include("/home/fbcremix/public_html/Remix/yla.php");
         <div id="clear"></div>
         <div class="kaikki_kuvat"></div>
         <?php
-        if(!isset($_GET['kategoriatid'])){
+//        if(!isset($_GET['kategoriatid'])){
         include("/home/fbcremix/public_html/Remix/kuvagalleria/index.php");
-        } else {
+//        } else {
             include("/home/fbcremix/public_html/Remix/kuvagalleria/kategoria.php");
-        }
+//        }
         ?>
     </div>
 </div>

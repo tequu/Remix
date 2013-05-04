@@ -8,7 +8,7 @@ var sivunumerot = (function(){
     function Sivunumerot(minne, sivuja, aloitussivu, sivujanakyvissa, clicked){
         this.model = {
             minne: minne,
-            sivuja: sivuja,
+            sivuja: Math.ceil(sivuja),
             nykyinensivu: aloitussivu,
             sivujanakyvissa: sivujanakyvissa,
             clicked: clicked

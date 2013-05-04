@@ -52,14 +52,16 @@
 #foorumi #uusikeskustelu .lisaa {
     width: 111px;
     height: 31px;
+    margin: 0px;
     background-image: URL(/Remix/kuvat/valikko/lisaa.png);
     float: left;
     cursor: pointer;
 }
-#foorumi #uusikeskustelu .tyhjenna {
+#foorumi #uusikeskustelu .takaisin {
     width: 111px;
     height: 31px;
-    background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);
+    margin: 0px;
+    background-image: URL(/Remix/kuvat/valikko/takaisin.png);
     float: left;
     cursor: pointer;
 }

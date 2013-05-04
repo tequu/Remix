@@ -1,24 +1,32 @@
-#foorumi #viestit .viesti{
+#foorumi #keskustelu .takaisin{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#foorumi #keskustelu #sivunumerot {
+    float: right;
+}
+#foorumi #keskustelu #viestit .viesti{
     background-color: #d3d3d3;
     border-radius: 10px;
     width: 860px;
     margin-bottom: 20px;
 }
-#foorumi #pohja .viesti:last-child {
+#foorumi #keskustelu #viestit .viesti:last-child {
     margin-bottom: 0px;
 }
-#foorumi #viestit .viesti .header{
+#foorumi #keskustelu #viestit .viesti .header{
     background-color: #313131;
     border-radius: 5px 5px 0px 0px;
     height: 34px;
 }
-#foorumi #viestit .viesti .header .kirjoitusaika{
+#foorumi #keskustelu #viestit .viesti .header .kirjoitusaika{
     width: 180px;
     float: left;
     color: #ffffff;
     margin: 6px 0px 0px 20px;
 }
-#foorumi #viestit .viesti .header .otsikko {
+#foorumi #keskustelu #viestit .viesti .header .otsikko {
     color: #ff8331;
     background: transparent;
     padding: 0px;
@@ -28,40 +36,47 @@
     float: left;
     margin: 6px 0px 0px 0px;
 }
-#foorumi #viestit .viesti .header .vastaa, #foorumi #viestit .viesti .header .kopioi {
-    background-image: URL(/Remix/kuvat/valikko/vastaa.png);
+#foorumi #keskustelu #viestit .viesti .header .vastaa, #foorumi #keskustelu #viestit .viesti .header .kopioi, #foorumi #keskustelu #viestit .viesti .header .poista, #foorumi #keskustelu #viestit .viesti .header .muokkaa {
+    background-image: URL(/Remix/kuvat/valikko/vastaa_pikku.png);
     float: right;
-    width: 111px;
-    height: 31px;
+    width: 29px;
+    height: 25px;
     margin: 3px 5px 0px 0px;
+    cursor: pointer;
 }
-#foorumi #viestit .viesti .header .kopioi {
-    background-image: URL(/Remix/kuvat/valikko/kopioi.png);
+#foorumi #keskustelu #viestit .viesti .header .kopioi {
+    background-image: URL(/Remix/kuvat/valikko/kopioi_pikku.png);
 }
-#foorumi #viestit .viesti .vasen, #foorumi #viestit .viesti .oikea{
+#foorumi #keskustelu #viestit .viesti .header .poista{
+    background-image: URL(/Remix/kuvat/valikko/poista_pikku.png);
+}
+#foorumi #keskustelu #viestit .viesti .header .muokkaa{
+    background-image: URL(/Remix/kuvat/valikko/muokkaa_pikku.png);
+}
+#foorumi #keskustelu #viestit .viesti .vasen, #foorumi #keskustelu #viestit .viesti .oikea{
     width: 640px;
     float: left;
 }
-#foorumi #viestit .viesti .vasen{
+#foorumi #keskustelu #viestit .viesti .vasen{
     width: 200px;
 }
-#foorumi #viestit .viesti .vasen .kirjoittaja {
+#foorumi #keskustelu #viestit .viesti .vasen .kirjoittaja {
     margin-top: 5px;
     margin-left: 20px;
 }
-#foorumi #viestit .viesti .vasen .kirjoittaja .nimi {
+#foorumi #keskustelu #viestit .viesti .vasen .kirjoittaja .nimi {
     color: #000000;
     font-size: 16px;
 }
-#foorumi #viestit .viesti .vasen .kirjoittaja .arvo {
+#foorumi #keskustelu #viestit .viesti .vasen .kirjoittaja .arvo {
     color: #ff8331;
     font-size: 10px;
 }
-#foorumi #viestit .viesti .vasen .kirjoittajantiedot {
+#foorumi #keskustelu #viestit .viesti .vasen .kirjoittajantiedot {
     margin: 20px 0px 20px 20px;
     font-size: 13px;
 }
-#foorumi #viestit .viesti .oikea .teksti {
+#foorumi #keskustelu #viestit .viesti .oikea .teksti {
     width: 620px;
     border-style: solid;
     border-color: #ff8331;
@@ -69,7 +84,7 @@
     padding: 5px 0px;
 }
 
-#foorumi #viestit .viesti .oikea .allekirjoitus {
+#foorumi #keskustelu #viestit .viesti .oikea .allekirjoitus {
     margin: 10px 0px;
     font-size: 12px;
 }
@@ -104,14 +119,15 @@
 #foorumi #uusiviesti #napit {
     margin: 10px 0px 0px 70px;
 }
-#foorumi #uusiviesti #laheta {
+#foorumi #uusiviesti .laheta {
     width: 111px;
     height: 31px;
     background-image: URL(/Remix/kuvat/valikko/laheta.png);
     float: left;
     cursor: pointer;
+    margin: 0;
 }
-#foorumi #uusiviesti #tyhjenna {
+#foorumi #uusiviesti .tyhjenna {
     width: 111px;
     height: 31px;
     background-image: URL(/Remix/kuvat/valikko/tyhjenna.png);

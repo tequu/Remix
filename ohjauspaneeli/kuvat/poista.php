@@ -2,7 +2,11 @@
 <div class="ala_otsikko">Poista kuvakategoria</div>
 <div id="bold">Kuva kategoria sisältämän kuvat:</div>
 <?php
-$kysely = kysely($yhteys, "SELECT kk.nimi nimi FROM kuvakategoriat kk, joukkueet j WHERE joukkueetID=j.id AND kk.id='" . $kuvakategoriatid . "' AND j.id='" . $joukkue . "' AND kausi='" . $kausi . "'");
+if ($joukkue != 0) {
+    $kysely = kysely($yhteys, "SELECT kk.nimi nimi FROM kuvakategoriat kk, joukkueet j WHERE joukkueetID=j.id AND kk.id='" . $kuvakategoriatid . "' AND j.id='" . $joukkue . "' AND kausi='" . $kausi . "'");
+} else {
+    $kysely = kysely($yhteys, "SELECT nimi FROM kuvakategoriat WHERE id='" . $kuvakategoriatid . "' AND joukkueetID='0'");
+}
 if ($tulos = mysql_fetch_array($kysely)) {
     $kysely = kysely($yhteys, "SELECT kuva FROM kuvat WHERE kuvakategoriatID='" . $kuvakategoriatid . "'");
     if ($tulos = mysql_fetch_array($kysely)) {

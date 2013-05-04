@@ -1,10 +1,60 @@
-#foorumi #tapahtuma #in, #foorumi #tapahtuma #out{
+#foorumi #tapahtuma #napit #muokkaa, #foorumi #tapahtuma #napit #poista {
+    margin: 0;
+    width: 111px;
+    height: 31px;
+    background-image: URL(/Remix/kuvat/valikko/muokkaa.png);
+    float: left;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#foorumi #tapahtuma #napit #poista {
+    background-image: URL(/Remix/kuvat/valikko/poista.png);
+}
+#foorumi #tapahtuma #otsikko{
+    padding: 0px;
+    height: auto;
+    margin-bottom: 10px;
+}
+#foorumi #tapahtuma #ilmoittautumis-error {
+    font-size: 14px;
+    float: right;
+    color: #ff0000;
+    display: none;
+}
+#foorumi #tapahtuma #kommentointi-error {
+    display: none;
+    color: #ff0000;
+}
+#foorumi #tapahtuma #kommentointi-ok {
+    display: none;
+    color: #0fc106;
+}
+#foorumi #tapahtuma #aikajapaikka {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+#foorumi #tapahtuma #aikajapaikka #aika{
+    float: left;
+}
+#foorumi #tapahtuma #aikajapaikka #paikka{
+    float: right;
+}
+#foorumi #tapahtuma #kuvaus {
+    font-size: 16px;
+}
+#foorumi #tapahtuma #otsikko #ilmoittatuminentakaraja{
+    font-size: 18px;
+    margin-right: 30px;
+    padding-top: 4px;
+    float:right;
+}
+#foorumi #tapahtuma #ilmoittautumiset #in, #foorumi #tapahtuma #ilmoittautumiset #out{
     background-color: #d3d3d3;
     border-radius: 10px;
     width: 860px;
     min-height: 100px;
 }
-#foorumi #tapahtuma #header {
+#foorumi #tapahtuma #ilmoittautumiset #header {
     color: #ffffff;
     background-image: none;
     background-color: #313131;
@@ -15,12 +65,12 @@
     padding: 5px 0px 0px 20px;
     font-size: 18px;
 }
-#foorumi #tapahtuma #pelaajat {
-    width: 100%;
+#foorumi #tapahtuma #ilmoittautumiset #pelaajat {
+    width: auto;
     overflow: hidden;
-    padding-bottom: 10px;
+    padding: 0px 10px 10px 0px;
 }
-#foorumi #tapahtuma .pelaaja{
+#foorumi #tapahtuma #ilmoittautumiset .pelaaja{
     height: 19px;
     float: left;
     padding: 4px;
@@ -30,14 +80,15 @@
     color: #000000;
     background-color: #ff8331;
     box-shadow: 1px 1px 2px #888888;
+    cursor: default;
 }
 #foorumi #ilmoittaudu {
     float: right;
     font-size: 16px;
 }
-#foorumi #ilmoittaudu .in, #foorumi #ilmoittaudu .out, #foorumi #ilmoittaudu .in_ilmoittaunut, #foorumi #ilmoittaudu .out_ilmoittautunut {
+#foorumi #ilmoittaudu .in, #foorumi #ilmoittaudu .out, #foorumi #ilmoittaudu .in_ilmoittautunut, #foorumi #ilmoittaudu .out_ilmoittautunut {
     background-image: URL(/Remix/kuvat/valikko/in_grey.png);
-    width: 61px;
+    width: 43px;
     height: 31px;
     text-align: center;
     float: left;
@@ -60,25 +111,26 @@
     cursor: default;
     background-image: URL(/Remix/kuvat/valikko/out_red.png);
 }
-#foorumi #tapahtuma #kommentti {
+#foorumi #tapahtuma #ilmoittautumiset #kommentti {
     width: 880px;
     height: 31px;
     margin-top: 10px;
 }
-#foorumi #tapahtuma #kommentti #teksti {
+#foorumi #tapahtuma #ilmoittautumiset #kommentti #teksti {
     margin: 5px 5px 0px 10px;
     float: left;
 }
-#foorumi #tapahtuma #kommentti #kommenttikentta {
+#foorumi #tapahtuma #ilmoittautumiset #kommentti .kommenttikentta {
     margin: 5px 5px 0px 0px;
     width: 676px;
     border-width: 1px;
     float: left;
 }
-#foorumi #tapahtuma #kommentti #laheta {
+#foorumi #tapahtuma #ilmoittautumiset #kommentti .laheta {
     background-image: URL(/Remix/kuvat/valikko/laheta.png);
     height: 31px;
     width: 111px;
     float: left;
     cursor: pointer;
+    margin: 0;
 }

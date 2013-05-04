@@ -12,7 +12,6 @@ include("/home/fbcremix/public_html/Remix/logiikka/kuva.php");
 include("/home/fbcremix/public_html/Remix/logiikka/oikeudet.php");
 include("/home/fbcremix/public_html/Remix/logiikka/olemassaolo.php");
 include("/home/fbcremix/public_html/Remix/logiikka/tunnukset.php");
-include("/home/fbcremix/public_html/Remix/logiikka/hallinta/keskustelualue.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/johtokunta.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/joukkue.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/oikeudet.php");
@@ -24,6 +23,11 @@ include("/home/fbcremix/public_html/Remix/logiikka/hallinta/tilasto.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/kuvat.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/uutiset.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/yhteyshenkilot.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/foorumi/keskustelualue.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/foorumi/keskustelu.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/foorumi/viesti.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/foorumi/tapahtuma.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/foorumi/keskustelualueryhma.php");
 if (isset($kirjautunut)) {
     tarkistaKirjautuneenTunnus($yhteys);
 }
@@ -95,6 +99,7 @@ $headers = true;
         <link rel='stylesheet' type='text/css' href='/Remix/css/tilastot.css' />
         <link rel='stylesheet' type='text/css' href='/Remix/css/joukkueet.css' />
         <link rel='stylesheet' type='text/css' href='/Remix/css/kuvat.css' />
+        <link rel='stylesheet' type='text/css' href='/Remix/css/toimintalinja.css' />
 
         <script type="text/javascript" src="/Remix/js/jquery.js"></script>
         <script type="text/javascript" src="/Remix/js/javascript.js"></script>
@@ -106,8 +111,8 @@ $headers = true;
         <script type="text/javascript" src="/Remix/js/js.js"></script>
         <script type="text/javascript" src="/Remix/js/sponsorit.js"></script>
         <script type="text/javascript" src="/Remix/js/ohjauspaneeli.js"></script>
-<!--        <script type="text/javascript" src="/Remix/js/tapahtumat.js"></script>-->
         <script type="text/javascript" src="/Remix/js/pelaajakortti.js"></script>
+        <script type="text/javascript" src="/Remix/js/foorumi.js"></script>
 
         <script type='text/javascript'>
             <!--

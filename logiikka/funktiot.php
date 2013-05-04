@@ -107,140 +107,146 @@ function ohjaa($yhteys) {
     if ($_POST['ohjaa'] == 35) {
         luoSarjataulukko($yhteys);
     }
-    if($_POST['ohjaa'] == 36){
+    if ($_POST['ohjaa'] == 36) {
         muokkaaSarjataulukko($yhteys);
     }
-    if($_POST['ohjaa'] == 37){
+    if ($_POST['ohjaa'] == 37) {
         lisaaJoukkueSarjataulukkoon($yhteys);
     }
-    if($_POST['ohjaa'] == 38){
+    if ($_POST['ohjaa'] == 38) {
         poistaSarjataulukko($yhteys);
     }
-    if($_POST['ohjaa'] == 39){
+    if ($_POST['ohjaa'] == 39) {
         poistaJoukkueSarjataulukosta($yhteys);
     }
-    if($_POST['ohjaa'] == 40){
+    if ($_POST['ohjaa'] == 40) {
         siirraJoukkuettaSarjataulukossa($yhteys);
     }
-    if($_POST['ohjaa'] == 41){
+    if ($_POST['ohjaa'] == 41) {
         lisaaTiedotus($yhteys);
     }
-    if($_POST['ohjaa'] == 42){
+    if ($_POST['ohjaa'] == 42) {
         muokkaaTiedotusta($yhteys);
     }
-    if($_POST['ohjaa'] == 43){
+    if ($_POST['ohjaa'] == 43) {
         poistaTiedotus($yhteys);
     }
-    if($_POST['ohjaa'] == 44){
+    if ($_POST['ohjaa'] == 44) {
         luoPeliryhma($yhteys);
     }
-    if($_POST['ohjaa'] == 45){
+    if ($_POST['ohjaa'] == 45) {
         lisaaPeli($yhteys);
     }
-    if($_POST['ohjaa'] == 46){
+    if ($_POST['ohjaa'] == 46) {
         muokkaaPelia($yhteys);
     }
-    if($_POST['ohjaa'] == 47){
+    if ($_POST['ohjaa'] == 47) {
         lisaaTulos($yhteys);
     }
-    if($_POST['ohjaa'] == 48){
+    if ($_POST['ohjaa'] == 48) {
         poistaTulos($yhteys);
     }
-    if($_POST['ohjaa'] == 49){
+    if ($_POST['ohjaa'] == 49) {
         muokkaaPeliryhmanNimea($yhteys);
     }
-    if($_POST['ohjaa'] == 50){
+    if ($_POST['ohjaa'] == 50) {
         poistaPeliryhma($yhteys);
     }
-    if($_POST['ohjaa' ] == 51){
+    if ($_POST['ohjaa'] == 51) {
         lisaaUutinen($yhteys);
     }
-    if($_POST['ohjaa' ] == 52){
+    if ($_POST['ohjaa'] == 52) {
         muokkaaUutinen($yhteys);
     }
-    if($_POST['ohjaa'] == 53){
+    if ($_POST['ohjaa'] == 53) {
         lisaaJohtokuntaanJasen($yhteys);
     }
-    if($_POST['ohjaa'] == 54){
+    if ($_POST['ohjaa'] == 54) {
         muokkaaJohtokunnanJasenta($yhteys);
     }
-    if($_POST['ohjaa'] == 55){
+    if ($_POST['ohjaa'] == 55) {
         poistaJasenJohtokunnasta($yhteys);
     }
-    if($_POST['ohjaa'] == 56){
+    if ($_POST['ohjaa'] == 56) {
         luoTilasto($yhteys);
     }
-    if($_POST['ohjaa'] == 57){
+    if ($_POST['ohjaa'] == 57) {
         lisaaUusiPelaajaTilastoon($yhteys);
     }
-    if($_POST['ohjaa'] == 58){
+    if ($_POST['ohjaa'] == 58) {
         lisaaPelaajaTilastoon($yhteys);
     }
-    if($_POST['ohjaa'] == 59){
+    if ($_POST['ohjaa'] == 59) {
         muokkaaTilastonPelaaja($yhteys);
     }
-    if($_POST['ohjaa'] == 60){
+    if ($_POST['ohjaa'] == 60) {
         poistaPelaajaTilastosta($yhteys);
     }
-    if($_POST['ohjaa'] == 61){
+    if ($_POST['ohjaa'] == 61) {
         muokkaaTilastoa($yhteys);
     }
-    if($_POST['ohjaa'] == 62){
+    if ($_POST['ohjaa'] == 62) {
         poistaTilasto($yhteys);
     }
-    if($_POST['ohjaa'] == 63){
+    if ($_POST['ohjaa'] == 63) {
         lisaaKuvaKategoria($yhteys);
     }
-    if($_POST['ohjaa'] == 64){
+    if ($_POST['ohjaa'] == 64) {
         muokkaaKuvaKategoriaa($yhteys);
     }
-    if($_POST['ohjaa'] == 65){
+    if ($_POST['ohjaa'] == 65) {
         poistaKuvaKategoria($yhteys);
     }
-    if($_POST['ohjaa'] == 66){
+    if ($_POST['ohjaa'] == 66) {
         lisaaKuvaKuvakategoriaan($yhteys);
     }
-    if($_POST['ohjaa'] == 67){
+    if ($_POST['ohjaa'] == 67) {
         muokkaaKuvaKategorianKuvaa($yhteys);
     }
-    if($_POST['ohjaa'] == 68){
+    if ($_POST['ohjaa'] == 68) {
         poistaKuvaKategorianKuva($yhteys);
     }
-    if($_POST['ohjaa'] == 69){
+    if ($_POST['ohjaa'] == 69) {
         lisaaUusiYhteyshenkilo($yhteys);
     }
-    if($_POST['ohjaa'] == 70){
+    if ($_POST['ohjaa'] == 70) {
         lisaaYhteyshenkilo($yhteys);
     }
-    if($_POST['ohjaa'] == 71){
+    if ($_POST['ohjaa'] == 71) {
         muokkaaYhteyshenkiloa($yhteys);
     }
-    if($_POST['ohjaa'] == 72){
+    if ($_POST['ohjaa'] == 72) {
         poistaYhteyshenkilo($yhteys);
     }
-    if($_POST['ohjaa'] == 73){
+    if ($_POST['ohjaa'] == 73) {
         lisaaPoytakirja($yhteys);
     }
-    if($_POST['ohjaa'] == 74){
+    if ($_POST['ohjaa'] == 74) {
         vaihdasalasana($yhteys);
     }
-    if($_POST['ohjaa'] == 75){
+    if ($_POST['ohjaa'] == 75) {
         uusiViestiVieraskirjaan($yhteys);
     }
-    if($_POST['ohjaa'] == 76){
+    if ($_POST['ohjaa'] == 76) {
         unohtunutsalasana($yhteys);
     }
-    if($_POST['ohjaa'] == 77){
+    if ($_POST['ohjaa'] == 77) {
         aktivoi($yhteys);
     }
-    if($_POST['ohjaa'] == 78){
+    if ($_POST['ohjaa'] == 78) {
         poistaPeli($yhteys);
     }
-    if($_POST['ohjaa'] == 79){
+    if ($_POST['ohjaa'] == 79) {
         poistaUutisenKuva($yhteys, TRUE);
     }
-    if($_POST['ohjaa'] == 80){
+    if ($_POST['ohjaa'] == 80) {
         muokkaaTapahtumaa($yhteys);
+    }
+    if($_POST['ohjaa'] == 81){
+        poistaTapahtuma($yhteys);
+    }
+    if($_POST['ohjaa'] == 82){
+        muokkaaKeskustelua($yhteys);
     }
 }
 
@@ -263,7 +269,7 @@ function tarkistaOnkoPelaajaJoTilastossa($yhteys, $pelaaja, $tilastoryhmatid) {
 
 function haeTilastonNimi($yhteys, $tilastoryhmatid) {
     $tilastoryhmatid = mysql_real_escape_string($tilastoryhmatid);
-    $kysely = kysely($yhteys, "SELECT nimi FROM tilastoryhmat WHERE id='" . $tilastoryhmatid."'");
+    $kysely = kysely($yhteys, "SELECT nimi FROM tilastoryhmat WHERE id='" . $tilastoryhmatid . "'");
     $tulos = mysql_fetch_array($kysely);
     return $tulos['nimi'];
 }
@@ -330,6 +336,7 @@ function siirry($osoite) {
     } else {
         header("Location: /Remix/" . $osoite);
     }
+    echo "Sivusto vaatii toimiakseen javascriptin!";
     die();
 }
 
@@ -420,7 +427,7 @@ function loytyyko($taulu, $etsi) {
 }
 
 //palauttaa merkkijonona GET sis‰llˆn
-function haeGET($pois) {
+function get_to_string($pois) {
     $i = 0;
     $palautettava = "";
     foreach ($_GET as $key => $value) {
@@ -432,6 +439,14 @@ function haeGET($pois) {
         }
     }
     return $palautettava;
+}
+
+function tulosta_get_input($pois) {
+    foreach ($_GET as $avain => $arvo) {
+        if ($pois == null || !in_array($avain, $pois)) {
+            echo "<input type=\"hidden\" name=\"" . $avain . "\" value=\"" . $arvo . "\" />";
+        }
+    }
 }
 
 //muuntaa merkit XML muotoon
@@ -449,7 +464,7 @@ function uusiViestiVieraskirjaan($yhteys) {
     global $error;
     $nimi = mysql_real_escape_string($_POST['nimi']);
     $viesti = $_POST['viesti'];
-        $seura = mysql_real_escape_string($_POST['seura']);
+    $seura = mysql_real_escape_string($_POST['seura']);
     $joukkue = mysql_real_escape_string($_POST['joukkue']);
     $ip = mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
     if (empty($nimi))
@@ -497,13 +512,13 @@ function uusiViestiVieraskirjaan($yhteys) {
     $viesti = mysql_real_escape_string($viesti);
     $aikaleima = time();
     $aika = date("Y-m-d H:i", $aikaleima);
-    $kysely = kysely($yhteys, "INSERT INTO vieraskirja (kirjoittaja, email, aika, seura, joukkue, viesti, ip, poistettu, enabled, tunnuksetID) VALUES ".
+    $kysely = kysely($yhteys, "INSERT INTO vieraskirja (kirjoittaja, email, aika, seura, joukkue, viesti, ip, poistettu, enabled, tunnuksetID) VALUES " .
             "('" . $nimi . "', '" . $email . "', '" . $aika . "', '" . $seura . "', '" . $joukkue . "', '" . $viesti . "', '" . $ip . "', '0', '" . $enabled . "', '" . $id . "')");
     if (!isset($_SESSION['id'])) {
         $asetettuid = mysql_insert_id();
         $kysely = kysely($yhteys, "INSERT INTO tokenit (token, vieraskirjaID) VALUES ('" . $token . "', '" . $asetettuid . "')");
-        $linkki = "http://www.fbcremix.com/Remix/vahvista.php?viestiid=".$asetettuid."&token=".$token;
-        $sahkoposti = "Ole hyv‰ ja vahvista viestisi vieraskirjaan seuraavasta linkist‰. ". $linkki."\n\nT‰m‰ on automaattinen viesti, ‰l‰ vastaa t‰h‰n.";
+        $linkki = "http://www.fbcremix.com/Remix/vahvista.php?viestiid=" . $asetettuid . "&token=" . $token;
+        $sahkoposti = "Ole hyv‰ ja vahvista viestisi vieraskirjaan seuraavasta linkist‰. " . $linkki . "\n\nT‰m‰ on automaattinen viesti, ‰l‰ vastaa t‰h‰n.";
         mail($email, "FBC Remixin vieraskirjan viestin vahvistus", $sahkoposti);
     }
     siirry("vieraskirja.php");
@@ -729,7 +744,7 @@ function tulostapelit($kysely, $otsikko, $kaikki, $l_peli) {
                     echo"<tr><th colspan='4'>" . $tulos['joukkue'] . "</th></tr>";
                     $joukkue = $tulos['joukkue'];
                 }
-            echo"<tr".($tulos['kotiturnaus']?" class='kotiturnaus'":"").">";
+                echo"<tr" . ($tulos['kotiturnaus'] ? " class='kotiturnaus'" : "") . ">";
             } else {
                 $tamapaiva = getdate($tulos['aika']);
                 $paiva = $tamapaiva['mday'];
@@ -739,7 +754,7 @@ function tulostapelit($kysely, $otsikko, $kaikki, $l_peli) {
                 echo"<tr";
                 if ($pvm2 == $l_peli / 1000)
                     echo" id='fbcremix'";
-                echo($tulos['kotiturnaus']?" class='kotiturnaus'":"")."><td>" . date("d.m.Y", $tulos['aika']) . "</td>";
+                echo($tulos['kotiturnaus'] ? " class='kotiturnaus'" : "") . "><td>" . date("d.m.Y", $tulos['aika']) . "</td>";
             }
             echo"<td>" . date("H:i", $tulos['aika']) . "</td>
                     <td>";
@@ -769,6 +784,7 @@ function tulostapelit($kysely, $otsikko, $kaikki, $l_peli) {
     }
     echo"</table>";
 }
+
 function tulostaTilasto($kysely, $otsikko) {
     if ($tulos = mysql_fetch_array($kysely)) {
         echo"<table id='tilastottaulu' border='5'>
@@ -808,7 +824,7 @@ function tulostaTilasto($kysely, $otsikko) {
                         if ($pisteet == $v_pisteet && $maalit2 == $v_maalit && $syotot2 == $v_syotot && $u != 1)
                             $u--;
                         echo"<tr>";
-                        print "\t<td>" . $u . "<td>" . $nimi[$x]['pelaaja'] . "</td><td>" . $nimi[$x]['ottelut'] . "</td><td>" . $nimi[$x]['rankkaritm'] . " (".$nimi[$x]['rankkarity'].")</td><td>" . $nimi[$x]['minuutit'] . "</td><td>" . $maalit2 . "+" . $syotot2 . "=" . $pisteet . "</td><td>".$nimi[$x]['plusmiinus']."</td>\n"; // tehd‰‰n table
+                        print "\t<td>" . $u . "<td>" . $nimi[$x]['pelaaja'] . "</td><td>" . $nimi[$x]['ottelut'] . "</td><td>" . $nimi[$x]['rankkaritm'] . " (" . $nimi[$x]['rankkarity'] . ")</td><td>" . $nimi[$x]['minuutit'] . "</td><td>" . $maalit2 . "+" . $syotot2 . "=" . $pisteet . "</td><td>" . $nimi[$x]['plusmiinus'] . "</td>\n"; // tehd‰‰n table
                         print "</tr>\n";
                         $v_pisteet = $pisteet;
                         $v_maalit = $maalit2;
@@ -824,30 +840,94 @@ function tulostaTilasto($kysely, $otsikko) {
     echo"</table>";
 }
 
-function tarkistaOnkoAdmin($yhteys, $tunnus, $admin){
+function tarkistaOnkoAdmin($yhteys, $tunnus, $admin) {
     $tunnus = mysql_real_escape_string($tunnus);
-    $kysely = kysely($yhteys, "SELECT isadmin FROM tunnukset WHERE id='".$tunnus."'");
-    if($tulos = mysql_fetch_array($kysely)){
-        if($tulos['isadmin'] == $admin){
+    $kysely = kysely($yhteys, "SELECT isadmin FROM tunnukset WHERE id='" . $tunnus . "'");
+    if ($tulos = mysql_fetch_array($kysely)) {
+        if ($tulos['isadmin'] == $admin) {
             return true;
         }
     }
     return false;
 }
-function onkoKansioTyhja($kansio, $ohitettavat){
+
+function onkoKansioTyhja($kansio, $ohitettavat) {
     $dir = dir($kansio);
-    while(($tiedosto = $dir->read()) !== false){
-        if($tiedosto != "." && $tiedosto != ".." && !in_array($tiedosto, $ohitettavat)){
+    while (($tiedosto = $dir->read()) !== false) {
+        if ($tiedosto != "." && $tiedosto != ".." && !in_array($tiedosto, $ohitettavat)) {
             return false;
         }
     }
     return true;
 }
 
-function paivaMaaraValitsin($tunnus, $valittu, $vuodet){
+function paivaMaaraValitsin($tunnus, $valittu, $vuodet) {
     include("/home/fbcremix/public_html/Remix/foorumi/ohjelmat/paivamaaravalitsin.php");
 }
-function aikaValitsin($tunnus, $valittu){
+
+function aikaValitsin($tunnus, $valittu) {
     include("/home/fbcremix/public_html/Remix/foorumi/ohjelmat/aikavalitsin.php");
+}
+
+function katkaiseTeksti($teksti, $maxkirjaimia) {
+    if (strlen($teksti) <= $maxkirjaimia) {
+        return $teksti;
+    }
+    return substr($teksti, 0, strrpos($teksti, " ", $maxkirjaimia - strlen($teksti)));
+}
+
+function tulosta_joukkueet_valinta_jasenille($kayttaja, $kausi, $lisakentatalkuun, $lisakentatjalkeen, $seura, $siirry) {
+    include("/home/fbcremix/public_html/Remix/ohjelmat/joukkueenvalintajasenet.php");
+}
+
+function onkotanaan($paiva) {
+    $tanaan = getdate();
+    $paiva = getdate($paiva);
+    if ($tanaan['mday'] == $paiva['mday'] && $tanaan['mon'] == $paiva['mon'] && $tanaan['year'] == $paiva['year']) {
+        return true;
+    }
+    return false;
+}
+
+function onkohuomenna($paiva) {
+    $huomenna = getdate(time() + 24 * 60 * 60);
+    $paiva = getdate($paiva);
+    if ($huomenna['mday'] == $paiva['mday'] && $huomenna['mon'] == $paiva['mon'] && $huomenna['year'] == $paiva['year']) {
+        return true;
+    }
+    return false;
+}
+
+function onkoeilen($paiva) {
+    $eilen = getdate(time() - 24 * 60 * 60);
+    $paiva = getdate($paiva);
+    if ($huomenna['mday'] == $paiva['mday'] && $huomenna['mon'] == $paiva['mon'] && $huomenna['year'] == $paiva['year']) {
+        return true;
+    }
+    return false;
+}
+
+function tulostailmoittautumisnapit($kin, $kout, $tapahtumatid) {
+    include("/home/fbcremix/public_html/Remix/foorumi/apu/ilmoittautumisnapit.php");
+}
+
+function tulostapaivamaara($aikaleima, $vuosi, $kello) {
+    if(onkoeilen($aikaleima)){
+        echo "Eilen";
+    } elseif (onkotanaan($aikaleima)) {
+        echo "T‰n‰‰n";
+    } elseif (onkohuomenna($aikaleima)) {
+        echo "Huomenna";
+    } else {
+        $format = "d.m" . ($vuosi ? ".Y" : "");
+        echo date($format, $aikaleima);
+    }
+    if ($kello) {
+        echo " klo " . date("H:i", $aikaleima);
+    }
+}
+
+function tulostasivunumerot($maara, $ysm, $sivu, $linkki, $viimeinen, $nuolet, $ejav){
+    include("/home/fbcremix/public_html/Remix/ohjelmat/sivunumerot.php");
 }
 ?>
