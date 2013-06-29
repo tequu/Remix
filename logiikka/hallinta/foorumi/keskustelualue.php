@@ -41,19 +41,18 @@ function uusiKeskustelualue($yhteys) {
     $julkinen = mysql_real_escape_string($_POST['julkinen']);
     //Tarkistetaan ettei mik‰‰n ollut tyhj‰
     if (empty($nimi)) {
-        $error = "Et antanut nime‰<br />";
+        $error['lisaa']['nimi'] = "Et antanut nime‰<br />";
     }
     if (empty($kuvaus)) {
-        $error .= "Et antanut kuvausta<br />";
+        $error['lisaa']['kuvaus'] .= "Et antanut kuvausta<br />";
     }
-    if (!empty($error)) {
+    if (count($error['lisaa']) > 0) {
         return false;
     }
     //Tarkistetaan ettei yritetty luoda Joukkueet otsikon alle
     $kysely = kysely($yhteys, "SELECT otsikko FROM keskustelualueryhmat WHERE id='" . $keskustelualueryhmatid . "'");
     if ($tulos = mysql_fetch_array($kysely)) {
         if ($tulos['otsikko'] == "Joukkueet") {
-            $error = "Luodaksesi uuden keskustelualueen t‰h‰n ryhm‰‰n sinun t‰ytyy luoda uusi joukkue.";
             return;
         }
     }
@@ -80,20 +79,19 @@ function muokkaaKeskustelualuetta($yhteys) {
         siirry("eioikeuksia.php");
     }
     if (tarkistaOnkoJoukkueenKeskustelualue($yhteys, $keskustelualue)) {
-        $error = "T‰t‰ keskustelualuetta ei voida muokata. Kuvausta voidaan muokata joukkueiden hallinnan kautta.<br />";
         return false;
     }
     //Tarkistetaan ettei ollut tyhji‰
     if (empty($keskustelualue)) {
-        $error .= "Et valinnut keskustelualuetta.<br />";
+        $error['keskustelualue'] .= "Et valinnut keskustelualuetta.<br />";
     }
     if (empty($nimi)) {
-        $error .= "Et antanut nime‰.<br />";
+        $error['muokkaa']['nimi'] .= "Et antanut nime‰.<br />";
     }
     if (empty($kuvaus)) {
-        $error .= "Et antanut kuvausta.<br />";
+        $error['muokkaa']['kuvaus'] .= "Et antanut kuvausta.<br />";
     }
-    if (!empty($error)) {
+    if (count($error['muokkaa']) > 0) {
         return false;
     }
     kysely($yhteys, "UPDATE keskustelualueet SET nimi='" . $nimi . "', kuvaus='" . $kuvaus . "', julkinen='" . $julkinen . "' WHERE id='" . $keskustelualue . "' AND keskustelualueryhmatID='" . $keskustelualueryhmatid . "'");
@@ -110,12 +108,10 @@ function poistaKeskustelualue($yhteys) {
     $keskustelualueryhmatid = mysql_real_escape_string($_POST['keskustelualueryhmatid']);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     if (tarkistaKeskustelualueetOlemassaOlo($yhteys, $keskustelualue)) {
-        $_SESSION['virhe'] = "Keskustelualuetta ei lˆytynyt.";
-        siirry("virhe.php");
+        return false;
     }
     //Tarkistetaan ettei ollut joukkueen keskustelualue
     if (tarkistaOnkoJoukkueenKeskustelualue($yhteys, $keskustelualue)) {
-        $error = "Poistaaksesi t‰m‰n keskustelualueen sinun tulee poistaa kyseinen joukkue joukkueiden hallinnasta.";
         return false;
     }
     //Poistetaan keskustelualueelta viestit, paikallaolot, tapahtumat, keskustelut ja keskustelualue
@@ -139,14 +135,15 @@ function siirraKeskustelualue($yhteys) {
     $keskustelualueryhmatid = mysql_real_escape_string($_POST['keskustelualueryhmatid']);
     $keskustelualue = mysql_real_escape_string($_POST['keskustelualue']);
     $mryhma = mysql_real_escape_string($_POST['mryhma']);
+    if(empty($keskustelualue)){
+        return false;
+    }
     $kysely = kysely($yhteys, "SELECT id FROM keskustelualueryhmat WHERE id='".$mryhma."'");
     if(!$tulos = mysql_fetch_array($kysely)){
-        $error = "Ryhm‰‰ ei lˆytyny.";
         return false;
     }
     //Tarkistetaan ettei yritetty siirt‰‰ joukkueen keskustelualuetta
     if (tarkistaOnkoJoukkueenKeskustelualue($yhteys, $keskustelualue)) {
-        $error = "Et voi siirt‰‰ joukkueiden keskustelualueita.";
         return false;
     }
     //Siirret‰‰n

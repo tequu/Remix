@@ -1,72 +1,54 @@
-<hr />
-<div id="bold">Keskustelualueiden hallinta oikeudet</div>
-<div id="error"></div>
-<form name="kah" action="<?php echo $_SERVER['PHP_SELF'] . "?sivuid=" . $okayttajat . "&mode=muokkaa&kayttajatid=" . $kayttajatid; ?>" method="post">
-    <input type="hidden" name="ohjaa" id="ohjaa" />
-    <input type="hidden" name="kayttajatid" value="<?php echo $kayttajatid; ?>" />
-    <div>
-        Valitse ryhmä:
-        <select name="ryhmatid" id="ryhmat1">
-            <?php
-            tulostaValinnat($ryhmat);
-            ?>
+<div id="keskustelualueoikeudethallinta">
+    <hr />
+    <h3>Keskustelualueiden oikeuksien hallinta</h3>
+    <div id="ryhmanvalintavalikko">
+        <form id="keskustelualueoikeudetform" action="<?php echo $_SERVER['PHP_SELF'] . "?" . get_to_string(); ?>" method="post">
+            <input type="hidden" name="ohjaa" id="keskustelualueoikeudet_ohjaa" />
+            <input type="hidden" name="tunnusid" id="tunnusid" value="<?php echo $kayttajatid; ?>" />
+            <input type="hidden" name="oikeudet" id="oikeudet" />
+            Valitse ryhmä:
+            <select id="keskustelualueryhmat">
+                <option></option>
+                <?php
+                $kysely2 = kysely($yhteys, "SELECT * FROM keskustelualueryhmat ");
+                while ($tulos2 = mysql_fetch_array($kysely2)) {
+                    echo "<option value=\"" . $tulos2['id'] . "\">" . $tulos2['otsikko'] . "</option>";
+                }
+                ?>
+            </select>
+        </form>
+    </div>
+    
+    <div class="floatleft">
+        <select id="kahlisays" multiple="multiple" size="5">
         </select>
+        <br />
+        <input type="button" class="kahlisaa" value="Lisää" />
     </div>
-    <div id="floatleft">
-        Lisättävät<br />
-        <select name="lisattavatoikeudet[]" id="kahlisays" multiple="multiple" size="5">
-        </select><br />
-        <input type="button" value="Lisää" onclick="laheta('kah', ['ohjaa'], ['14'])" />
-    </div>
-    <div id="floatleft" style="margin-left:20px">
-        Poistettavat<br />
+    
+    <div class="floatleft" style="margin-left:20px">
         <select name="poistettavatoikeudet[]" id="kahpoisto" multiple="multiple" size="5">
-        </select><br />
-        <input type="button" value="Poista" onclick="laheta('kah', ['ohjaa'], ['31'])" />
-    </div>
-    <div id="clear"></div>
-</form>
-<hr />
-<div id="bold">Keskustelualueiden näkyvyys oikeudet</div>
-<form name="kan" action="<?php echo $_SERVER['PHP_SELF'] . "?sivuid=" . $okayttajat . "&mode=muokkaa&kayttajatid=" . $kayttajatid; ?>" method="post">
-    <input type="hidden" name="ohjaa" id="ohjaa" />
-    <input type="hidden" name="kayttajatid" value="<?php echo $kayttajatid; ?>" />
-    <div>
-        Valitse ryhmä:
-        <select name="ryhmatid" id="ryhmat2">
-            <?php
-            tulostaValinnat($ryhmat);
-            ?>
         </select>
+        <br />
+        <input type="button" class="kahpoista" value="Poista" />
     </div>
-    <div id="floatleft">
-        Lisättävät<br />
-        <select name="lisattavatoikeudet[]" id="kanlisays" multiple="multiple" size="5">
-        </select><br />
-        <input type="button" value="Lisää" onclick="laheta('kan', ['ohjaa'], ['13'])" /><br />
+    
+    <div class="clear"></div>
+    <hr />
+    <h4>Keskustelualueiden näkyvyys oikeudet</h4>
+    
+    <div class="floatleft">
+        <select id="kanlisays" multiple="multiple" size="5">
+        </select>
+        <br />
+        <input type="button" class="kanlisaa" value="Lisää" /><br />
     </div>
-    <div id="floatleft" style="margin-left:20px">
-        Poistettavat<br />
-        <select name="poistettavatoikeudet[]" id="kanpoisto" multiple="multiple" size="5">
-        </select><br />
-        <input type="button" value="Poista" onclick="laheta('kan', ['ohjaa'], ['30'])" /><br />
+    
+    <div class="floatleft" style="margin-left:20px">
+        <select id="kanpoisto" multiple="multiple" size="5">
+        </select>
+        <br />
+        <input type="button" class="kanpoista" value="Poista" /><br />
     </div>
-    <div id="clear"></div>
-</form>
-<script type="text/javascript">
-            $(document).ready(function() {
-                var kayttaja = <?php echo $kayttajatid; ?>;
-                $("#ryhmat1").change(function() {
-                    paivitaKeskustelualueet(kayttaja, $("#ryhmat1 option:selected").val(), "kahlisays", 1);
-                    paivitaKeskustelualueet(kayttaja, $("#ryhmat1 option:selected").val(), "kahpoisto", 2);
-                });
-                $("#ryhmat2").change(function() {
-                    paivitaKeskustelualueet(kayttaja, $("#ryhmat2 option:selected").val(), "kanlisays", 3);
-                    paivitaKeskustelualueet(kayttaja, $("#ryhmat2 option:selected").val(), "kanpoisto", 4);
-                });
-                paivitaKeskustelualueet(kayttaja, $("#ryhmat1 option:selected").val(), "kahlisays", 1);
-                paivitaKeskustelualueet(kayttaja, $("#ryhmat1 option:selected").val(), "kahpoisto", 2);
-                paivitaKeskustelualueet(kayttaja, $("#ryhmat2 option:selected").val(), "kanlisays", 3);
-                paivitaKeskustelualueet(kayttaja, $("#ryhmat2 option:selected").val(), "kanpoisto", 4);
-            });
-</script>
+    <div class="clear"></div>
+</div>

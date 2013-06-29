@@ -76,7 +76,7 @@ function ohjaa($yhteys) {
         liitaHenkiloJoukkueeseen($yhteys);
     if ($_POST['ohjaa'] == 25)
 //Muokkaa käyttäjän omat tiedot
-        muokkaaOmatTiedot($yhteys);
+        muokkaaOmiaTietoja($yhteys);
     if ($_POST['ohjaa'] == 26)
 //Uusi keskustelu
         uusiKeskustelu($yhteys);
@@ -248,6 +248,12 @@ function ohjaa($yhteys) {
     if($_POST['ohjaa'] == 82){
         muokkaaKeskustelua($yhteys);
     }
+    if($_POST['ohjaa'] == 83){
+        muokkaaKayttajanTietoja($yhteys);
+    }
+    if($_POST['ohjaa'] == 84){
+        lahetaUusiVahvistus($yhteys);
+    }
 }
 
 function tarkistaOnkoJoukkueNykysellaKaudella($yhteys, $joukkue) {
@@ -360,12 +366,12 @@ function tarkistaPerusTiedot($etunimi, $sukunimi, $syntymavuosi) {
     global $error;
     $aika = getdate();
     if (empty($etunimi))
-        $error .= "Etunimi kenttä on tyhjä<br />";
+        $error['muokkaa']['etunimi'] .= "Etunimi kenttä on tyhjä<br />";
     if (empty($sukunimi))
-        $error .= "Sukunimi kenttä on tyhjä<br />";
+        $error['muokkaa']['sukunimi'] = "Sukunimi kenttä on tyhjä<br />";
     if (empty($syntymavuosi) || $syntymavuosi < ($aika['year'] - 100) || $syntymavuosi > $aika['year'])
-        $error .= "Syntymävuosi on virheellinen<br />";
-    if (!empty($error)) {
+        $error['muokkaa']['syntymavuosi'] = "Syntymävuosi on virheellinen<br />";
+    if (count($error['muokkaa']) > 0) {
         return false;
     }
     return true;
@@ -427,7 +433,7 @@ function loytyyko($taulu, $etsi) {
 }
 
 //palauttaa merkkijonona GET sisällön
-function get_to_string($pois) {
+function get_to_string($pois = array()) {
     $i = 0;
     $palautettava = "";
     foreach ($_GET as $key => $value) {

@@ -2,16 +2,17 @@
 
 //Uusi keskustelualue ryhm‰
 function uusiKeskustelualueRyhma($yhteys) {
-    global $okeskustelualueryhma;
+    global $okeskustelualueryhma, $error;
     if (!tarkistaAdminOikeudet($yhteys, "Admin")) {
         $_SESSION['eioikeuksa'] = "Sinulla ei ole oikeuksia luoda keskustelualue ryhmi‰.";
         siirry("eioikeuksia.php");
     }
-    global $error;
+    echo $okeskustelualueryhma;
+    die("k");
     $otsikko = mysql_real_escape_string(trim($_POST['otsikko']));
     //Tarkistetaan ett‰ saatiin nimi
     if (empty($otsikko)) {
-        $error = "Et antanut nime‰.";
+        $error['lisaa']['otsikko'] = "Et antanut nime‰.";
         return;
     }
     //Luodaan uusi ryhm‰
@@ -33,13 +34,12 @@ function muokkaaKeskustelualueenRyhmanNimea($yhteys) {
     if ($tulos = mysql_fetch_array($kysely)) {
         //Tarkistetaan ettei yritet‰ muokata kiellettyj‰ keskustelualueita
         if ($tulos['otsikko'] == "Joukkueet") {
-            $error = "Joukkueet ryhm‰‰ ei voida muokata.";
             return false;
         }
     }
     //Tarkistetaan ett‰ saatiin nimi
     if (empty($otsikko)) {
-        $error = "Et antanut nime‰<br />";
+        $error['muokkaa']['otsikko'] = "Et antanut nime‰<br />";
         return;
     }
     kysely($yhteys, "UPDATE keskustelualueryhmat SET otsikko='" . $otsikko . "' WHERE id='" . $ryhma . "'");
@@ -57,7 +57,6 @@ function poistaKeskustelualueRyhma($yhteys) {
     $kysely = kysely($yhteys, "SELECT otsikko FROM keskustelualueryhmat WHERE id='" . $ryhma . "'");
     $tulos = mysql_fetch_array($kysely);
     if ($tulos['otsikko'] == "Joukkueet") {
-        $error = "Joukkueet ryhm‰‰ ei voida poistaa.";
         return false;
     }
     //Tarkistetaan ett‰ kaikki keskustelualueet on poistettu ryhm‰n alta ennen poistoa

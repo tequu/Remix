@@ -8,7 +8,7 @@ if ($osat[count($osat) - 1] != "kirjaudu.php")
     <div id="kirjaudu">
         <div class="otsikko" style="background-image:URL('/Remix/kuvat/kirjaudu.png')"></div>
         <div id="error"><?php echo $error; ?></div>
-        <form name="kirjaudu" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form id="kirjauduform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="ohjaa" value="1" />
             <div id="osa">
                 Käyttäjätunnus:<br />
@@ -19,7 +19,7 @@ if ($osat[count($osat) - 1] != "kirjaudu.php")
                 <input type="password" name="salasana" />
             </div>
             <div id="clear"></div>
-            <div class="kirjaudusisaan" onclick="laheta('kirjaudu', [], []);" /></div>
+            <div class="kirjaudusisaan" onclick="laheta('kirjauduform', [], [], []);" /></div>
             <a href="/Remix/unohtunutsalasana.php">Unohditko salasanasi?</a>
         </form>
     </div>

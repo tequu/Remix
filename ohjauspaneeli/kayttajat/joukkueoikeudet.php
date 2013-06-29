@@ -1,18 +1,18 @@
 <hr />
-<div id="bold">Joukkueiden oikeudet</div>
+<h3 class="ala_otsikko">Joukkueiden oikeuksien hallinta</h3>
 <?php
-$kysely = kysely($yhteys, "SELECT id, nimi FROM joukkueet WHERE id NOT IN (SELECT joukkueetID FROM oikeudet WHERE joukkueetID!='null' AND tunnuksetID='" . $kayttajatid . "')");
-if ($tulos = mysql_fetch_array($kysely)) {
+$kysely2 = kysely($yhteys, "SELECT id, nimi FROM joukkueet WHERE id NOT IN (SELECT joukkueetID FROM oikeudet WHERE joukkueetID!='null' AND tunnuksetID='" . $kayttajatid . "')");
+if ($tulos2 = mysql_fetch_array($kysely2)) {
     ?>
-    <div id="floatleft">
-        <form action="<?php echo $_SERVER['PHP_SELF'] . "?sivuid=" . $okayttajat . "&mode=muokkaa&kayttajatid=" . $kayttajatid; ?>" method="post">
+    <div class="floatleft">
+        <form action="<?php echo $_SERVER['PHP_SELF'] . "?" . get_to_string(); ?>" method="post">
             <input type="hidden" name="ohjaa" value="15" />
-            Lisättävät<br />
+            <input type="hidden" name="tunnusid" value="<?php echo $kayttajatid; ?>" />
             <select name="oikeudet[]" multiple="multiple" size="5">
                 <?php
                 do {
-                    echo"<option value='" . $tulos['id'] . "'>" . $tulos['nimi'] . "</option>";
-                } while ($tulos = mysql_fetch_array($kysely));
+                    echo"<option value='" . $tulos2['id'] . "'>" . $tulos2['nimi'] . "</option>";
+                } while ($tulos2 = mysql_fetch_array($kysely2));
                 ?>
             </select><br />
             <input type="submit" value="Lisää oikeudet" />
@@ -20,18 +20,18 @@ if ($tulos = mysql_fetch_array($kysely)) {
     </div>
     <?php
 }
-$kysely = kysely($yhteys, "SELECT id, nimi FROM joukkueet j, oikeudet WHERE j.id=joukkueetID AND tunnuksetID='" . $kayttajatid . "'");
-if ($tulos = mysql_fetch_array($kysely)) {
+$kysely2 = kysely($yhteys, "SELECT id, nimi FROM joukkueet j, oikeudet WHERE j.id=joukkueetID AND tunnuksetID='" . $kayttajatid . "'");
+if ($tulos2 = mysql_fetch_array($kysely2)) {
     ?>
-    <div id="floatleft" style="margin-left:20px;">
-        <form action="<?php echo $_SERVER['PHP_SELF'] . "?sivuid=" . $okayttajat . "&mode=muokkaa&kayttajatid=" . $kayttajatid; ?>" method="post">
+    <div class="floatleft" style="margin-left:20px;">
+        <form action="<?php echo $_SERVER['PHP_SELF'] . "?" . get_to_string(); ?>" method="post">
             <input type="hidden" name="ohjaa" value="32" />
-            Poistettavat<br />
+            <input type="hidden" name="tunnusid" value="<?php echo $kayttajatid; ?>" />
             <select name="oikeudet[]" multiple="multiple" size="5">
                 <?php
                 do {
-                    echo"<option value='" . $tulos['id'] . "'>" . $tulos['nimi'] . "</option>";
-                } while ($tulos = mysql_fetch_array($kysely));
+                    echo"<option value='" . $tulos2['id'] . "'>" . $tulos2['nimi'] . "</option>";
+                } while ($tulos2 = mysql_fetch_array($kysely2));
                 ?>
             </select><br />
             <input type="submit" value="Poista oikeudet" />
@@ -40,4 +40,4 @@ if ($tulos = mysql_fetch_array($kysely)) {
     <?php
 }
 ?>
-<div id="clear"></div>
+<div class="clear"></div>

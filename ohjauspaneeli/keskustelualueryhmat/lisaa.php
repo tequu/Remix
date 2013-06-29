@@ -1,7 +1,7 @@
-<div id="error"><?php echo $error; ?></div>
-<div class="ala_otsikko">Uusi keskustelualue ryhmä</div>
-<form action="<?php echo $_SERVER['PHP_SELF']."?sivuid=".$okeskustelualueryhma; ?>" method="post">
+<h4 class="ala_otsikko">Uusi keskustelualue ryhmä</h4>
+<form action="<?php echo $_SERVER['PHP_SELF'] . "?".  get_to_string(); ?>" method="post">
     <input type="hidden" name="ohjaa" value="5" />
-    Ryhmän nimi: <input type="text" name="otsikko" />
+    <div class="vasen">Ryhmän nimi:</div><div class="oikea"> <input type="text" name="otsikko" /> <span class="error"><?php echo $error['lisaa']['otsikko']; ?></span></div>
+    <div class="clear"></div>
     <input type="submit" value="Lisää" />
 </form>

@@ -9,7 +9,7 @@
         kuvaTemplate: $("#kuvagalleria_kuva-template").html(),
         kategoriaTemplate: $("#kuvagalleria_kategoria-template").html(),
         kategoriatTemplate: $("#kuvagalleria_kategoriat-template").html(),
-        url: "http://fbcremix.com/Remix/json/kuvagalleria.php",
+        url: "/Remix/json/kuvagalleria.php",
         kuvatUrl: "/Remix/kuvat/kuvakategoriat/",
         loaderUrl: "/Remix/kuvat/loader.gif",
         riveja: 2,

@@ -3,14 +3,11 @@
 //Lisää hallinta oikeudet käyttäjälle
 function lisaaHallintaOikeudet($yhteys) {
     global $error, $okayttajat;
-    if (!tarkistaAdminOikeudet($yhteys, "Admin")) {
-        $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia antaa hallinta oikeuksia käyttäjille.";
-        siirry("eioikeuksia.php");
-    }
-    $kayttajatid = mysql_real_escape_string($_GET['kayttajatid']);
-    $oikeudet = $_POST['ohjaa'] == 14 ? $_POST['lisattavatoikeudet'] : $_POST['oikeudet'];
+    tarkistaOikeudet($yhteys, "admin", "MasterAdmin", "Sinulla ei ole oikeuksia antaa oikeuksia");
+    $tunnusid = mysql_real_escape_string($_POST['tunnusid']);
+    $oikeudet = json_decode(str_replace("\\", "", $_POST['oikeudet']))->{"oikeudet"};
     //Tarkistetaan tunnuksen olemassa olo
-    if (!tarkistaTunnuksenOlemassaOlo($yhteys, $kayttajatid)) {
+    if (!tarkistaTunnuksenOlemassaOlo($yhteys, $tunnusid)) {
         $_SESSION['virhe'] = "Käyttäjää ei löytynyt.";
         siirry("virhe.php");
     }
@@ -20,12 +17,12 @@ function lisaaHallintaOikeudet($yhteys) {
         $sql = "INSERT INTO oikeudet (" . ($_POST['ohjaa'] == 14 ? "keskustelualueetID" : "joukkueetID") . ", tunnuksetID) VALUES ";
         foreach ($oikeudet as $oikeus) {
             $oikeus = mysql_real_escape_string($oikeus);
-            $sql .= "('" . $oikeus . "', '" . $kayttajatid . "'), ";
+            $sql .= "('" . $oikeus . "', '" . $tunnusid . "'), ";
         }
         $sql = substr($sql, 0, -2);
         kysely($yhteys, $sql);
     }
-    ohjaaOhajuspaneeliin($okayttajat, "&mode=muokkaa&kayttajatid=" . $kayttajatid);
+    ohjaaOhajuspaneeliin($okayttajat, "&mode=muokkaa&kayttajatid=" . $tunnusid);
 }
 
 //Lisää admin oikeudet

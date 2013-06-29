@@ -75,10 +75,7 @@ function tarkistaNakyvyysOikeudetJoukkueeseen($yhteys, $joukkue) {
 
 //Tarkistaa onko käyttäjällä hallinta oikeudet joukkueeseen
 function tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue) {
-    if (tarkistaHallintaOikeudet($yhteys, "joukkueetID", $joukkue)) {
-        return true;
-    }
-    return false;
+    return tarkistaHallintaOikeudet($yhteys, "joukkueetID", $joukkue);
 }
 
 /**
@@ -88,9 +85,6 @@ function tarkistaHallintaOikeudetJoukkueeseen($yhteys, $joukkue) {
  * @return boolean True jos on, muute false
  */
 function tarkistaAdminOikeudet($yhteys, $admin) {
-    //Tarkistetaan tunnus
-    tarkistaKirjautuneenTunnus($yhteys);
-    //Päivitetään oikeudet
     paivitaOikeudet($yhteys);
     if ($_SESSION['oikeudet'] == "Masteradmin") {
         return true;
@@ -101,14 +95,35 @@ function tarkistaAdminOikeudet($yhteys, $admin) {
     return false;
 }
 
+function tarkistaOikeudet($yhteys, $tarkistettava, $haluttu, $viesti) {
+    global $siirry;
+    tarkistaKirjautuneenTunnus($yhteys);
+    $vaihtoehdot = array(
+        "admin" => "tarkistaAdminOikeudet", 
+        "joukkueh" => "tarkistaHallintaOikeudetJoukkueeseen",
+        "joukkuen" => "tarkistaNakyvyysOikeudetJoukkueeseen",
+        "keskustelualueh" => "tarkistaHallintaOikeudetKeskustelualueelle",
+        "keskustelualuen" => "tarkistaNakyvyysOikeudetKeskustelualueelle"
+        );
+    foreach ($vaihtoehdot as $key => $value) {
+        if($key == $tarkistettava){
+            if(!$value($yhteys, $haluttu)){
+                if($siirry){
+                    $_SESSION['eioikeuksia'] = $viesti;
+                    siirry("eioikeuksia.php");
+                }
+                return false;
+            }
+            return true;
+        }
+    }
+}
+
 //Tarkistaa hallinta oikudet
 function tarkistaHallintaOikeudet($yhteys, $kumpi, $vaadittava) {
-    //Tarkistetaan, jos Masteradmin
     if (tarkistaAdminOikeudet($yhteys, "Masteradmin")) {
         return true;
     }
-    //Tarkistetaan tunnus
-    tarkistaKirjautuneenTunnus($yhteys);
     $kayttaja = mysql_real_escape_string($_SESSION['id']);
     //Jos vaadittava ei ole nolla
     if ($vaadittava != 0) {

@@ -12,6 +12,7 @@ include("/home/fbcremix/public_html/Remix/logiikka/kuva.php");
 include("/home/fbcremix/public_html/Remix/logiikka/oikeudet.php");
 include("/home/fbcremix/public_html/Remix/logiikka/olemassaolo.php");
 include("/home/fbcremix/public_html/Remix/logiikka/tunnukset.php");
+include("/home/fbcremix/public_html/Remix/logiikka/hallinta/kayttajat.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/johtokunta.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/joukkue.php");
 include("/home/fbcremix/public_html/Remix/logiikka/hallinta/oikeudet.php");
@@ -100,6 +101,7 @@ $headers = true;
         <link rel='stylesheet' type='text/css' href='/Remix/css/joukkueet.css' />
         <link rel='stylesheet' type='text/css' href='/Remix/css/kuvat.css' />
         <link rel='stylesheet' type='text/css' href='/Remix/css/toimintalinja.css' />
+        <link rel='stylesheet' type='text/css' href='/Remix/css/ohjauspaneeli.css' />
 
         <script type="text/javascript" src="/Remix/js/jquery.js"></script>
         <script type="text/javascript" src="/Remix/js/javascript.js"></script>

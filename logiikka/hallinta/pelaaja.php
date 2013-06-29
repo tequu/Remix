@@ -8,7 +8,7 @@ function lisaaUusiPelaajaJoukkueeseen($yhteys) {
         $_SESSION['eioikeuksia'] = "Sinulla ei ole oikeuksia lisätä pelaajia " . haeJoukkueenNimi($yhteys, $joukkue) . " joukkueeseen.";
         siirry("eioikeuksia.php");
     }
-    $tunnusid = luoTunnus($yhteys);
+    $tunnusid = luoTunnus($yhteys, $joukkue);
     $rooli = mysql_real_escape_string($_POST['rooli'] == "Muu, mikä?" ? $_POST['muu'] : $_POST['rooli']);
     $kapteeni = mysql_real_escape_string($_POST['kapteeni']);
     $pelinumero = mysql_real_escape_string($_POST['pelinumero']);

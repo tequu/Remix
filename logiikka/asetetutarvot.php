@@ -1,6 +1,5 @@
 <?php
 $kausi = "2012-2013";
-$error = "";
 $siirry = true;
 $headers = false;
 $seura = false;

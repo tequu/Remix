@@ -1,0 +1,56 @@
+#ohjauspaneeli .vasen, #ohjauspaneeli .oikea {
+    float: left;
+    margin-bottom: 5px;
+}
+#ohjauspaneeli #keskustelualueryhmathallinta .vasen {
+    width: 150px;
+}
+#ohjauspaneeli #keskustelualueryhmathallinta .oikea {
+    width: 415px;
+}
+#ohjauspaneeli #keskustelualuehallinta .vasen {
+    width: 200px;
+}
+#ohjauspaneeli #keskustelualuehallinta .oikea {
+    width: 365px;
+}
+#ohjauspaneeli #kayttajienhallinta .vasen {
+    width: 125px;
+}
+#ohjauspaneeli #kayttajienhallinta #hakukentta {
+    width: 565px;
+    height: 30px;
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .perustiedot {
+    width: 565px;
+    height: 30px;
+    color: #E86D1C
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .perustiedot .nimi {
+    float: left;
+    cursor: pointer;
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .perustiedot .oikealle {
+    float: right;
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .tarkattiedot {
+    margin-left: 10px;
+    color: #000000;
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .tarkattiedot .tieto {
+    width: 555px;
+    height: 30px;
+}
+#ohjauspaneeli #kayttajienhallinta .kayttaja .tarkattiedot .tieto .vasen {
+    width: 120px;
+}
+#ohjauspaneeli #kayttajienhallinta #kayttajantiedot {
+    margin-bottom: 50px;
+}
+#ohjauspaneeli #kayttajienhallinta #kayttajantiedot .oikea {
+    width: 440px;
+    height: 30px;
+}
+#ohjauspaneeli #kayttajienhallinta #kayttajantiedot #kayttajanhallinta .float {
+    float: left;
+}

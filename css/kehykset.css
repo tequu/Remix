@@ -52,26 +52,23 @@ body, html {
     height:35px;
     background-repeat: no-repeat;
 }
-/*.ala_otsikko{
-    margin:0 auto 10px;
-    text-decoration:underline;
-    font-size:20px;
-    font-weight:bold;
-}*/
+.ala_otsikko{
+    margin: 20px 0px 10px 0px;
+}
 #keskelle{
     text-align:center;
     margin:0 auto;
 }
-#error{
+.error{
     color:#FF0000;
 }
-#floatleft {
+.floatleft {
     float:left;
 }
-#floatright {
+.floatright {
     float:right;
 }
-#clear{
+.clear{
     clear:both;
 }
 #tekstivasempaan{
